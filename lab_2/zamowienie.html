@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title> Kreator pizzy </title>
+</head>
+<body>
+<div id="kontener">
+    <div id="baner"><h1> Kreator pizzy </h1></div>
+    <div id="tresc">
+        <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post">
+            <fieldset name="size">
+                <legend>Rozmiar</legend>
+                <div>
+                    <label for="size-small">
+                        <input id="size-small" name="size" type="radio" value="small">Mała
+                    </label>
+                    <label for="size-medium">
+                        <input checked id="size-medium" name="size" type="radio" value="medium">Średnia
+                    </label>
+                    <label for="size-large">
+                        <input id="size-large" name="size" type="radio" value="large">Duża
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset name="toppings">
+                <legend>Dodatki</legend>
+                <div>
+                    <input id="ham" name="topping" type="checkbox" value="ham">
+                    <label for="ham">Szynka</label>
+                </div>
+                <div>
+                    <input id="salami" name="topping" type="checkbox" value="salami">
+                    <label for="salami">Salami</label>
+                </div>
+                <div>
+                    <input id="bacon" name="topping" type="checkbox" value="bacon">
+                    <label for="bacon">Boczek</label>
+                </div>
+                <div>
+                    <input id="paprika" name="topping" type="checkbox" value="paprika">
+                    <label for="paprika">Papryka</label>
+                </div>
+                <div>
+                    <input id="tomato" name="topping" type="checkbox" value="tomato">
+                    <label for="tomato">Pomidor</label>
+                </div>
+                <div>
+                    <input id="cheese" name="topping" type="checkbox" value="cheese">
+                    <label for="cheese">Ser</label>
+                </div>
+            </fieldset>
+
+            <fieldset name="sauces">
+                <legend>Sosy</legend>
+                <div>
+                    <label for="sauce-select">
+                        Wybierz sos:
+                        <select id="sauce-select" multiple name="sauce" size="4">
+                            <option value="tomato">Pomidorowy</option>
+                            <option value="garlic">Czosnkowy</option>
+                            <option value="ketchup-mild">Ketchup łagodny</option>
+                            <option value="ketchup-spicy">Ketchup pikantny</option>
+                            <option value="ketchup-spicy">Ketchup pikantny</option>
+                            <option value="olive-mild">Oliwa łagodna</option>
+                            <option value="olive-spicy">Oliwa pikantna</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label for="other-comments">
+                        Inne uwagi:
+                        <textarea cols="70" id="other-comments" name="other-comments" rows="5"></textarea>
+                    </label>
+                </div>
+            </fieldset>
+
+            <br>
+            <div>
+                <input type="reset" value="Wyczyść dane">
+                <input type="submit" value="Wyślij zamówienie">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

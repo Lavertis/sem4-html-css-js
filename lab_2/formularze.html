@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title> Szybki kurs HTML </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/formularze.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="kontener">
+    <div id="baner"><h1> Szybki kurs HTML </h1></div>
+    <div id="menu">
+        <a href="index.html"> Podstawowe znaczniki </a>
+        <a href="tabele.html"> Tworzenie tabel </a>
+        <a href="formularze.html"> Budowa formularzy </a>
+    </div>
+    <div id="tresc">
+        <h3>Podstawowe znaczniki formularza HTML to:</h3>
+        <ul>
+            <li> &lt;form&gt; - znacznik podstawowy zawierający pola formularza</li>
+            <li> &lt;input&gt; - znacznik umożliwia wstawienie różnych pól (pole tekstowe, przycisk typu radio, przycisk
+                typu checkbox) w zależności od wartości jego atrybutu type
+            </li>
+            <li> &lt;select&gt; - pole formularza typu lista rozwijana</li>
+            <li> &lt;textarea&gt; - pole formularza typu obszar tekstowy</li>
+            <li> &lt;button&gt; - pole formularza typu przycisk</li>
+        </ul>
+        <div>
+            <h3>Przykładowy formularz HTML:</h3>
+            <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post">
+                <table>
+                    <tr>
+                        <td><label for="surname">Nazwisko:</label></td>
+                        <td><input id="surname" name="surname" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="age">Wiek:</label></td>
+                        <td><input id="age" name="age" type="number"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="country">Państwo:</label></td>
+                        <td><select id="country" name="country" size="1">
+                            <option value="pl">Polska</option>
+                            <option value="fr">Francja</option>
+                            <option value="ge">Niemcy</option>
+                            <option value="uk">Wielka Brytania</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Adres e-mail:</label></td>
+                        <td><input id="email" name="email" type="text"/></td>
+                    </tr>
+                </table>
+
+                <h4>Zamawiam tutorial z języka:</h4>
+                <div>
+                    <label for="C">
+                        <input id="C" name="C" type="checkbox" value="on"/>C/C++
+                    </label>
+                    <label for="Java">
+                        <input id="Java" name="Java" type="checkbox" value="on"/>Java
+                    </label>
+                    <label for="PHP">
+                        <input id="PHP" name="PHP" type="checkbox" value=on/>PHP
+                    </label>
+                </div>
+
+                <h4>Sposób zapłaty:</h4>
+                <div>
+                    <label for="eurocard">
+                        <input id="eurocard" name="payment-method" type="radio" value="eurocard"/>eurocard
+                    </label>
+                    <label for="visa">
+                        <input id="visa" name="payment-method" type="radio" value="visa"/>visa
+                    </label>
+                    <label for="bank-transfer">
+                        <input id="bank-transfer" name="payment-method" type="radio" value="bank-transfer"/>przelew
+                        bankowy
+                    </label>
+                </div>
+                <br>
+
+                <input type="submit" value="Wyślij"/>
+                <input type="reset" value="Wyczyść"/>
+            </form>
+        </div>
+    </div>
+    <div id="stopka"><p> &copy;RK </p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+body {
+    background: #4ae;
+    color: #000040;
+}
+
+h1, h2, #stopka {
+    background: #000040;
+    color: #4ae;
+    text-align: center;
+}
+
+#menu {
+    background: white;
+}
+
+#tresc {
+    background: lightblue;
+}
