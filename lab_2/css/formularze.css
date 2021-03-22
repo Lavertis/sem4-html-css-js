@@ -1,0 +1,12 @@
+select {
+    color: #ff0000;
+}
+
+input[type=text] {
+    margin: 8px 0;
+}
+
+button {
+    margin: 5px 0;
+    color: #fd0085
+}
