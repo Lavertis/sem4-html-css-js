@@ -81,13 +81,6 @@ ul#nav li:hover ul {
 }
 
 /*Pozycjonowanie elementów na stronie */
-#tresc {
-    float: left;
-    width: 75%;
-    padding: 1%;
-    text-align: center;
-}
-
 #pasek {
     float: right;
     width: 20%;
@@ -106,6 +99,10 @@ ul#nav li:hover ul {
     float: left;
     width: 74%;
     padding: 1%;
+}
+
+#galeria {
+    text-align: center;
 }
 
 #pasek {
