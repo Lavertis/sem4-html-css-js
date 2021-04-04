@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Formularz dotacji</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+<body>
+<div>
+    <form method="get">
+        <h3>Formularz dotacji</h3>
+        <fieldset>
+            <legend>Dotacja</legend>
+            <label for="beneficiary-choice">Beneficjent:</label>
+            <input id="beneficiary-choice" list="beneficiary" required
+                   title="Wybierz organizację, której chcesz przekazać pieniądze"><br>
+            <datalist id="beneficiary">
+                <option value="WOŚP">
+                <option value="Wioski Dziecięce SOS">
+            </datalist>
+            <label for="amount">Wartość dotacji:</label>
+            <input id="amount" min="20" name="amount" required step="10" title="WIP" type="number">
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Dane karty płatniczej</legend>
+            <label>Karta:</label>
+            <input id="card-visa" name="card" required type="radio" value="visa">
+            <label for="card-visa">Visa</label>
+            <input id="card-mastercard" name="card" required type="radio" value="mastercard">
+            <label for="card-mastercard">Master Card</label><br>
+            <label for="card-number">Numer:</label>
+            <input id="card-number" name="card-number" pattern="^[0-9]{13,16}$" placeholder="1234567890123456" required
+                   title="Podaj numer karty płatniczej składający się z 13 do 16 cyfr" type="text"><br>
+            <label for="exp-date">Data ważności:</label>
+            <input id="exp-date" name="exp-date" required title="Podaj datę ważności swojej karty płatniczej"
+                   type="month"><br>
+            <label for="cvv">Kod CVV:</label>
+            <input id="cvv" name="cvv" pattern="^[0-9]{3,4}$" required
+                   title="Podaj kod CVV złożony z 3 lub 4 cyfr podanych na odwrocie karty"
+                   type="text">
+        </fieldset>
+        <p>
+            <label for="donor">Darczyńca:</label>
+            <input id="donor" name="donor" pattern="^[A-Za-z0-9]{3,}$" required type="text">
+            <br><br>
+            <input type="submit" value="Rejestruj">
+            <input type="reset" value="Wyczyść">
+        </p>
+    </form>
+</div>
+</body>
+</html>

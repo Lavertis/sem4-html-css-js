@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Formularz rejestracyjny</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+<body>
+<div>
+    <form method="get">
+        <p>
+            <label for="name">Imię*:</label><br/>
+            <input id="name" name="name" pattern="^[A-ZŁŚ][a-ząęółśżźćń-]{1,20}(\s[A-ZŁŚ][a-ząęółśżźćń]{1,20})?$"
+                   required
+                   title="Akceptowane wartości: Imię, Imię1 Imię2"
+                   type="text"><br/>
+            <label for="surname">Nazwisko*:</label><br/>
+            <input id="surname" name="surname"
+                   pattern="^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$" required
+                   title="Akceptowane wartości: Nazwisko, Nazwisko1-Nazwisko2"
+                   type="text"><br/>
+            <label for="email">Email*:</label><br/>
+            <input id="email" name="email" placeholder="username@host.domain" required type="email"><br/>
+            <label for="phone">Telefon*:</label><br/>
+            <input id="phone" name="phone" pattern="^([+]\d{1,4})?\d{9}$" placeholder="+48123456789"
+                   required type="tel"><br/>
+            <label for="birth-date">Data urodzenia:</label><br/>
+            <input id="birth-date" name="birth-date" type="date"><br/>
+            <label for="password">Hasło*:</label><br/>
+            <input id="password" name="password" pattern="^([a-zA-Z0-9]{8,15})$" required
+                   title="Hasło musi składać się z 8-15 znaków. Dozwolone są małe i duże litery oraz cyfry"
+                   type="password"><br/>
+        </p>
+        <p>
+            <input id="radio-pupil" name="kto" required type="radio" value="pupil">
+            <label for="radio-pupil">Uczeń</label>
+            <input id="radio-student" name="kto" required type="radio" value="student">
+            <label for="radio-student">Student</label>
+            <input id="radio-worker" name="kto" required type="radio" value="worker">
+            <label for="radio-worker">Pracownik</label><br/><br/>
+            <label for="interests">Zainteresowania:</label>
+            <select id="interests" multiple name="interests" required size="3">
+                <option value="sport">Sport</option>
+                <option value="music">Muzyka</option>
+                <option value="film">Film</option>
+                <option value="automotive">Motoryzacja</option>
+                <option value="dance">Taniec</option>
+                <option value="travels">Podróże</option>
+            </select><br/>
+            <label for="acceptance">*Akceptuję regulamin</label>
+            <input id="acceptance" name="acceptance" required type="checkbox"><br/>
+            <input type="submit" value="Rejestruj">
+            <input type="reset" value="Wyczyść">
+        </p>
+    </form>
+</div>
+</body>
+</html>
