@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title> Szybki kurs HTML </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/formularze.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="container">
+    <header><h1> Szybki kurs HTML </h1></header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Podstawy</a></li>
+            <li><a href="tabele.html">Tabele</a></li>
+            <li><a href="">Formularze</a>
+                <ul>
+                    <li><a href="formularze.html">Pola formularza</a></li>
+                    <li><a href="">Obliczenia w formularzu</a></li>
+                </ul>
+            </li>
+            <li><a href="galeria.html" title="">Galeria</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h3>Podstawowe znaczniki formularza HTML to:</h3>
+        <ul>
+            <li> &lt;form&gt; - znacznik podstawowy zawierający pola formularza</li>
+            <li> &lt;input&gt; - znacznik umożliwia wstawienie różnych pól (pole tekstowe, przycisk typu radio, przycisk
+                typu checkbox) w zależności od wartości jego atrybutu type
+            </li>
+            <li> &lt;select&gt; - pole formularza typu lista rozwijana</li>
+            <li> &lt;textarea&gt; - pole formularza typu obszar tekstowy</li>
+            <li> &lt;button&gt; - pole formularza typu przycisk</li>
+        </ul>
+        <div>
+            <h3>Przykładowy formularz HTML:</h3>
+            <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post">
+                <table>
+                    <tr>
+                        <td><label for="surname">Nazwisko:</label></td>
+                        <td><input id="surname" name="surname" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="age">Wiek:</label></td>
+                        <td><input id="age" name="age" type="number"/></td>
+                    </tr>
+                    <tr>
+                        <td><label for="country">Państwo:</label></td>
+                        <td><select id="country" name="country" size="1">
+                            <option value="pl">Polska</option>
+                            <option value="fr">Francja</option>
+                            <option value="ge">Niemcy</option>
+                            <option value="uk">Wielka Brytania</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Adres e-mail:</label></td>
+                        <td><input id="email" name="email" type="text"/></td>
+                    </tr>
+                </table>
+
+                <h4>Zamawiam tutorial z języka:</h4>
+                <div>
+                    <input id="C" name="C" type="checkbox" value="on"/>
+                    <label for="C">C/C++</label>
+                    <input id="Java" name="Java" type="checkbox" value="on"/>
+                    <label for="Java">Java</label>
+                    <input id="PHP" name="PHP" type="checkbox" value=on/>
+                    <label for="PHP">PHP</label>
+                </div>
+
+                <h4>Sposób zapłaty:</h4>
+                <div>
+                    <input id="eurocard" name="payment-method" type="radio" value="eurocard"/>
+                    <label for="eurocard">eurocard</label>
+                    <input id="visa" name="payment-method" type="radio" value="visa"/>
+                    <label for="visa">visa</label>
+                    <input id="bank-transfer" name="payment-method" type="radio" value="bank-transfer"/>
+                    <label for="bank-transfer">przelew bankowy</label>
+                </div>
+                <br>
+
+                <input type="submit" value="Wyślij"/>
+                <input type="reset" value="Wyczyść"/>
+            </form>
+        </div>
+    </article>
+    <aside>
+        <div class="box">
+            <h3>Walidatory:</h3>
+            <ul>
+                <li><a href="http://validator.w3.org/">HTML </a></li>
+                <li><a href="http://jigsaw.w3.org/css-validator/">CSS</a></li>
+            </ul>
+        </div>
+        <div class="box">
+            <h3>Kursy:</h3>
+            <ul>
+                <li><a href="https://www.w3schools.com/html/"> HTML </a></li>
+                <li><a href="https://www.w3schools.com/css/"> CSS </a></li>
+                <li><a href="https://www.w3schools.com/js/"> JS </a></li>
+                <li><a href="https://www.w3schools.com/php/"> PHP </a></li>
+            </ul>
+        </div>
+    </aside>
+    <footer> &copy;RK</footer>
+</div>
+</body>
+</html>
