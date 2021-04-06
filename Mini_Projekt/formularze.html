@@ -24,14 +24,13 @@
             <li><a href="galeria.html" title="">Galeria</a></li>
         </ul>
     </nav>
-    <div class="two-columns">
+    <div class="column-flex">
         <article>
             <h3>Podstawowe znaczniki formularza HTML to:</h3>
             <ul>
                 <li> &lt;form&gt; - znacznik podstawowy zawierający pola formularza</li>
                 <li> &lt;input&gt; - znacznik umożliwia wstawienie różnych pól (pole tekstowe, przycisk typu radio,
-                    przycisk
-                    typu checkbox) w zależności od wartości jego atrybutu type
+                    przycisk typu checkbox) w zależności od wartości jego atrybutu type
                 </li>
                 <li> &lt;select&gt; - pole formularza typu lista rozwijana</li>
                 <li> &lt;textarea&gt; - pole formularza typu obszar tekstowy</li>
@@ -44,10 +43,9 @@
                     <table>
                         <tr>
                             <td><label for="surname">Nazwisko:</label></td>
-                            <td><input id="surname" name="surname"
-                                       pattern="^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$"
-                                       required
+                            <td><input id="surname" name="surname" required
                                        title="Nazwisko musi zaczynać się z dużej litery i zawierać przynajmniej 2 znaki.&#10;W przypadku posiadania 2 nazwisk, proszę oddzielić je myślnikiem."
+                                       pattern="^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$"
                                        type="text"/>
                             </td>
                         </tr>
@@ -55,8 +53,7 @@
                             <td><label for="age">Wiek:</label></td>
                             <td><input id="age" max="100" min="18" name="age" required
                                        title="Podaj swój wiek.&#10;Aby zamówić tutorial musisz być pełnoletni."
-                                       type="number"/>
-                            </td>
+                                       type="number"/></td>
                         </tr>
                         <tr>
                             <td><label for="country">Państwo:</label></td>
@@ -69,11 +66,8 @@
                         </tr>
                         <tr>
                             <td><label for="email">Adres e-mail:</label></td>
-                            <td>
-                                <input id="email" name="email" placeholder="username@host.domain" required
-                                       title="Podaj swój adres email."
-                                       type="email"/>
-                            </td>
+                            <td><input id="email" name="email" placeholder="username@host.domain" required
+                                       title="Podaj swój adres email." type="email"/></td>
                         </tr>
                     </table>
                     <br>
@@ -102,8 +96,8 @@
                     </div>
                     <br>
 
-                    <input type="submit" value="Wyślij"/>
-                    <input type="reset" value="Wyczyść"/>
+                    <input class="btn blue ripple" type="submit" value="Wyślij"/>
+                    <input class="btn blue ripple" type="reset" value="Wyczyść"/>
                 </form>
 
             </div>

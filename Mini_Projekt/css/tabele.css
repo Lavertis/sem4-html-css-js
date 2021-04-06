@@ -1,20 +1,28 @@
 table {
-    /*border-collapse: collapse;*/
+    border-collapse: collapse;
+    border-style: hidden;
     background: #d0e7f8;
     text-align: center;
     width: 94%;
     margin: 2%;
     box-shadow: 0 2px 15px 2px rgba(0, 0, 0, .7);
-    border-radius: 15px;
+    border-radius: 16px;
 }
 
 caption {
     font-size: 150%;
-    margin-bottom: 1%;
+    margin-bottom: 0.4em;
 }
 
 th, tr, td {
     padding: 5px;
+    border-right: 2px solid #d0e7f8;
+    border-left: 2px solid #d0e7f8;
+}
+
+th, tr, td, tfoot {
+    border-top: 2px solid #d0e7f8;
+    border-bottom: 2px solid #d0e7f8;
 }
 
 td {
