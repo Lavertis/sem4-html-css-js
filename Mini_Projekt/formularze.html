@@ -10,96 +10,104 @@
 </head>
 <body>
 <div id="container">
-    <header><h1> Szybki kurs HTML </h1></header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Podstawy</a></li>
-            <li><a href="tabele.html">Tabele</a></li>
-            <li><a href="">Formularze</a>
-                <ul>
-                    <li><a href="formularze.html">Pola formularza</a></li>
-                    <li><a href="">Obliczenia w formularzu</a></li>
-                </ul>
-            </li>
-            <li><a href="galeria.html" title="">Galeria</a></li>
-        </ul>
-    </nav>
+    <header>
+        <h1> Szybki kurs HTML </h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Podstawy</a></li>
+                <li><a href="tabele.html">Tabele</a></li>
+                <li><a href="">Formularze</a>
+                    <ul>
+                        <li><a href="formularze.html">Pola formularza</a></li>
+                        <li><a href="">Obliczenia w formularzu</a></li>
+                    </ul>
+                </li>
+                <li><a href="galeria.html" title="">Galeria</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="column-flex">
         <main>
-            <h3>Podstawowe znaczniki formularza HTML to:</h3>
-            <ul>
-                <li> &lt;form&gt; - znacznik podstawowy zawierający pola formularza</li>
-                <li> &lt;input&gt; - znacznik umożliwia wstawienie różnych pól (pole tekstowe, przycisk typu radio,
-                    przycisk typu checkbox) w zależności od wartości jego atrybutu type
-                </li>
-                <li> &lt;select&gt; - pole formularza typu lista rozwijana</li>
-                <li> &lt;textarea&gt; - pole formularza typu obszar tekstowy</li>
-                <li> &lt;button&gt; - pole formularza typu przycisk</li>
-            </ul>
+            <section>
+                <h3>Podstawowe znaczniki formularza HTML to:</h3>
+                <ul>
+                    <li> &lt;form&gt; - znacznik podstawowy zawierający pola formularza</li>
+                    <li> &lt;input&gt; - znacznik umożliwia wstawienie różnych pól (pole tekstowe, przycisk typu radio,
+                        przycisk typu checkbox) w zależności od wartości jego atrybutu type
+                    </li>
+                    <li> &lt;select&gt; - pole formularza typu lista rozwijana</li>
+                    <li> &lt;textarea&gt; - pole formularza typu obszar tekstowy</li>
+                    <li> &lt;button&gt; - pole formularza typu przycisk</li>
+                </ul>
+            </section>
             <div>
-                <h3>Przykładowy formularz HTML:</h3>
-                <!--                <form method="post">-->
-                <form id="sample-form" method="get">
-                    <table>
-                        <tr>
-                            <td><label for="surname">Nazwisko:</label></td>
-                            <td><input id="surname" name="surname" required
-                                       title="Nazwisko musi zaczynać się z dużej litery i zawierać przynajmniej 2 znaki.&#10;W przypadku posiadania 2 nazwisk, proszę oddzielić je myślnikiem."
-                                       pattern="^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$"
-                                       type="text"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="age">Wiek:</label></td>
-                            <td><input id="age" max="100" min="18" name="age" required
-                                       title="Podaj swój wiek.&#10;Aby zamówić tutorial musisz być pełnoletni."
-                                       type="number"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="country">Państwo:</label></td>
-                            <td><select id="country" name="country" size="1" title="Wybierz swój kraj">
-                                <option value="pl">Polska</option>
-                                <option value="fr">Francja</option>
-                                <option value="ge">Niemcy</option>
-                                <option value="uk">Wielka Brytania</option>
-                            </select></td>
-                        </tr>
-                        <tr>
-                            <td><label for="email">Adres e-mail:</label></td>
-                            <td><input id="email" name="email" placeholder="username@host.domain" required
-                                       title="Podaj swój adres email." type="email"/></td>
-                        </tr>
-                    </table>
-                    <br>
+                <section>
+                    <h3>Przykładowy formularz HTML:</h3>
+                    <!--                <form method="post">-->
+                    <form id="sample-form" method="get">
+                        <table>
+                            <tr>
+                                <td><label for="surname">Nazwisko:</label></td>
+                                <td><input id="surname" name="surname"
+                                           pattern="^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$"
+                                           required
+                                           title="Nazwisko musi zaczynać się z dużej litery i zawierać przynajmniej 2 znaki.&#10;W przypadku posiadania 2 nazwisk, proszę oddzielić je myślnikiem."
+                                           type="text"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="age">Wiek:</label></td>
+                                <td><input id="age" max="100" min="18" name="age" required
+                                           title="Podaj swój wiek.&#10;Aby zamówić tutorial musisz być pełnoletni."
+                                           type="number"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="country">Państwo:</label></td>
+                                <td><select id="country" name="country" size="1" title="Wybierz swój kraj">
+                                    <option value="pl">Polska</option>
+                                    <option value="fr">Francja</option>
+                                    <option value="ge">Niemcy</option>
+                                    <option value="uk">Wielka Brytania</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">Adres e-mail:</label></td>
+                                <td><input id="email" name="email" placeholder="username@host.domain" required
+                                           title="Podaj swój adres email." type="email"/></td>
+                            </tr>
+                        </table>
+                        <br>
 
-                    <h4>Zamawiam tutorial z języka:</h4>
-                    <div>
-                        <input id="C" name="C" title="Zaznacz przynajmniej jedno pole" type="checkbox" value="on"/>
-                        <label for="C">C/C++</label>
-                        <input id="Java" name="Java" title="Zaznacz przynajmniej jedno pole" type="checkbox"
-                               value="on"/>
-                        <label for="Java">Java</label>
-                        <input id="PHP" name="PHP" title="Zaznacz przynajmniej jedno pole" type="checkbox" value=on/>
-                        <label for="PHP">PHP</label>
-                    </div>
-                    <script src="js/script.js"></script>
-                    <br>
+                        <h4>Zamawiam tutorial z języka:</h4>
+                        <div>
+                            <input id="C" name="C" title="Zaznacz przynajmniej jedno pole" type="checkbox" value="on"/>
+                            <label for="C">C/C++</label>
+                            <input id="Java" name="Java" title="Zaznacz przynajmniej jedno pole" type="checkbox"
+                                   value="on"/>
+                            <label for="Java">Java</label>
+                            <input id="PHP" name="PHP" title="Zaznacz przynajmniej jedno pole" type="checkbox"
+                                   value=on/>
+                            <label for="PHP">PHP</label>
+                        </div>
+                        <script src="js/script.js"></script>
+                        <br>
 
-                    <h4>Sposób zapłaty:</h4>
-                    <div>
-                        <input id="eurocard" name="payment-method" required type="radio" value="eurocard"/>
-                        <label for="eurocard">eurocard</label>
-                        <input id="visa" name="payment-method" required type="radio" value="visa"/>
-                        <label for="visa">visa</label>
-                        <input id="bank-transfer" name="payment-method" required type="radio" value="bank-transfer"/>
-                        <label for="bank-transfer">przelew bankowy</label>
-                    </div>
-                    <br>
+                        <h4>Sposób zapłaty:</h4>
+                        <div>
+                            <input id="eurocard" name="payment-method" required type="radio" value="eurocard"/>
+                            <label for="eurocard">eurocard</label>
+                            <input id="visa" name="payment-method" required type="radio" value="visa"/>
+                            <label for="visa">visa</label>
+                            <input id="bank-transfer" name="payment-method" required type="radio"
+                                   value="bank-transfer"/>
+                            <label for="bank-transfer">przelew bankowy</label>
+                        </div>
+                        <br>
 
-                    <input class="btn blue ripple" type="submit" value="Wyślij"/>
-                    <input class="btn blue ripple" type="reset" value="Wyczyść"/>
-                </form>
-
+                        <input class="btn blue ripple" type="submit" value="Wyślij"/>
+                        <input class="btn blue ripple" type="reset" value="Wyczyść"/>
+                    </form>
+                </section>
             </div>
         </main>
         <aside>

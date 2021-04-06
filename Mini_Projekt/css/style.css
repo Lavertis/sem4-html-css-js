@@ -106,11 +106,6 @@ main {
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, .7);
 }
 
-article > header {
-    text-align: center;
-    font-size: 1.6em;
-}
-
 aside {
     width: 18%;
     padding: 1%;
