@@ -5,12 +5,12 @@ table {
     text-align: center;
     width: 94%;
     margin: 2%;
-    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, .7);
+    box-shadow: 0 1px 7px 1px rgba(0, 0, 0, .7);
     border-radius: 16px;
 }
 
 caption {
-    font-size: 150%;
+    font-size: 140%;
     margin-bottom: 0.4em;
 }
 
@@ -27,12 +27,14 @@ th, tr, td, tfoot {
 
 td {
     color: #34495e;
+    table-layout: fixed;
+    word-wrap: break-word;
 }
 
 thead, tfoot {
     background-color: #007dff;
     color: white;
-    font-size: 110%;
+    font-size: 100%;
     padding: 5pt;
 }
 
@@ -64,4 +66,20 @@ th:last-of-type {
 
 #no-border-radius > th {
     border-radius: 0;
+}
+
+.content {
+    word-wrap: break-word; /*old browsers*/
+    overflow-wrap: break-word;
+}
+
+.overflow-wrap-hack {
+    max-width: 1px;
+}
+
+@media screen and (max-width: 720px) {
+    caption {
+        font-size: 120%;
+        margin-bottom: 0.4em;
+    }
 }

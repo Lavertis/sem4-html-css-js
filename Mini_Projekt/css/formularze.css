@@ -66,3 +66,9 @@ input:focus, select:focus {
     background-size: 100%;
     transition: background 0s;
 }
+
+@media screen and (max-width: 720px) {
+    input[type=text], input[type=email] {
+        width: 120%;
+    }
+}
