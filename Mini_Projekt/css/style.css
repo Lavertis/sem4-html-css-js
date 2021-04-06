@@ -13,9 +13,13 @@ h1, h2, h3, h4 {
     padding: 0;
 }
 
-h1, h2 {
+h1 {
     background: #000040;
     color: #8080ff;
+    text-align: center;
+}
+
+h2 {
     text-align: center;
 }
 
@@ -92,7 +96,7 @@ header > h1 {
     letter-spacing: 1px;
 }
 
-article {
+main {
     background: #96ceff;
     width: 70%;
     padding: 2%;
