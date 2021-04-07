@@ -1,9 +1,7 @@
 input[type=text],
 input[type=email],
 input[type=number],
-input[type=checkbox],
 select {
-    font-size: 100%;
     text-align: center;
     color: #34495e;
     background-color: #d0e7f8;
@@ -13,14 +11,11 @@ select {
     border-radius: 3px;
     border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
+    width: 100%;
 }
 
-input[type=text], input[type=email] {
-    width: 150%;
-}
-
-select {
-    width: 72%;
+input[type=checkbox] {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
 }
 
 input:hover, select:hover {
@@ -29,6 +24,10 @@ input:hover, select:hover {
 
 input:focus, select:focus {
     background-color: #a7dcff;
+}
+
+td:last-child {
+    width: 75%;
 }
 
 .btn {
@@ -65,10 +64,4 @@ input:focus, select:focus {
     background-color: #6eb9f7;
     background-size: 100%;
     transition: background 0s;
-}
-
-@media screen and (max-width: 720px) {
-    input[type=text], input[type=email] {
-        width: 120%;
-    }
 }
