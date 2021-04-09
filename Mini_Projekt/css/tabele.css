@@ -7,8 +7,8 @@ table {
     border-style: hidden;
     background: #d0e7f8;
     text-align: center;
-    width: 94%;
-    margin: 2%;
+    width: 90%;
+    margin: 2% auto;
     box-shadow: 0 1px 7px 1px rgba(0, 0, 0, .7);
     border-radius: 16px;
 }
@@ -30,16 +30,12 @@ th, tr, td, tfoot {
 }
 
 td {
-    color: #34495e;
-    table-layout: fixed;
     word-wrap: break-word;
 }
 
 thead, tfoot {
     background-color: #007dff;
     color: white;
-    font-size: 100%;
-    padding: 5pt;
 }
 
 thead {
@@ -53,7 +49,6 @@ tfoot > tr > td {
 
 tfoot a, tfoot td {
     color: white;
-    text-decoration: none;
 }
 
 tr:nth-child(odd) td {
@@ -72,12 +67,7 @@ th:last-of-type {
     border-radius: 0;
 }
 
-.content {
-    word-wrap: break-word; /*old browsers*/
-    overflow-wrap: break-word;
-}
-
-.overflow-wrap-hack {
+.wrap-link {
     max-width: 1px;
 }
 

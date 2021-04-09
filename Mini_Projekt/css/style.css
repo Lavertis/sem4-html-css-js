@@ -5,7 +5,6 @@ html * {
 
 body {
     background: whitesmoke;
-    color: #000040;
 }
 
 h1, h2, h3, h4 {
@@ -19,36 +18,29 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    text-align: center;
-}
-
 nav {
-
+    margin: 0 2%;
 }
 
 nav > ul {
-    flex-wrap: wrap;
-    text-align: left;
-    overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    overflow: hidden;
     padding: 5px 0;
 }
 
 nav > ul li {
     list-style-type: none;
     background: #0000a0;
-    margin: 2px 0 2px 3px;
+    margin: 2px;
     border-radius: 5px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
-    text-align: center;
-    flex: fit-content;
 }
 
 nav > ul li:hover {
-    list-style-type: none;
     background: #0000d0;
 }
 
@@ -68,7 +60,6 @@ nav > ul li ul {
 
 nav > ul li:hover ul {
     position: absolute;
-    background: transparent;
     padding: 0;
     display: block;
     width: 177px;
@@ -103,23 +94,21 @@ header > h1 {
 
 main {
     background: #96ceff;
-    flex: 75%;
+    flex: 80%;
     padding: 2%;
     margin-left: 2%;
     margin-bottom: 2%;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, .7);
-    flex-grow: 1;
 }
 
 aside {
-    flex: 10%;
+    flex: 20%;
     padding: 1%;
     margin: 0 5%;
 }
 
 footer {
-    clear: both;
     width: 100%;
     padding: 5px 0 5px 0;
     background: #000040;
@@ -156,19 +145,14 @@ footer {
 
     .flex-main-with-aside {
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
     }
 
-    main {
-        width: 90%;
-        margin-left: 0;
-    }
-}
-
-@media screen and (max-width: 480px) {
-
     nav > ul li {
         flex: 49%;
+    }
+
+    main {
+        margin: 4%;
     }
 }
