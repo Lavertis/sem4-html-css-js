@@ -1,7 +1,3 @@
-#container {
-    min-width: 300px;
-}
-
 table {
     border-collapse: collapse;
     border-style: hidden;
@@ -29,7 +25,7 @@ th, tr, td, tfoot {
     border-bottom: 2px solid #d0e7f8;
 }
 
-td {
+td, th {
     word-wrap: break-word;
 }
 
@@ -67,7 +63,7 @@ th:last-of-type {
     border-radius: 0;
 }
 
-.wrap-link {
+.wrap-words {
     max-width: 1px;
 }
 
