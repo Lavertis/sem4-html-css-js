@@ -13,17 +13,16 @@
     <header>
         <h1> Szybki kurs HTML </h1>
         <nav>
-            <ul>
-                <li><a href="index.html">Podstawy</a></li>
-                <li><a href="tabele.html">Tabele</a></li>
-                <li><a href="">Formularze</a>
-                    <ul>
-                        <li><a href="formularze.html">Pola formularza</a></li>
-                        <li><a href="">Obliczenia w formularzu</a></li>
-                    </ul>
-                </li>
-                <li><a href="galeria.html" title="">Galeria</a></li>
-            </ul>
+            <a href="index.html">Podstawy</a>
+            <a href="tabele.html">Tabele</a>
+            <div class="dropdown">
+                <a href="">Formularze</a>
+                <div class="dropdown-content">
+                    <a href="formularze.html">Pola formularza</a>
+                    <a href="#">Obliczenia w formularzu</a>
+                </div>
+            </div>
+            <a href="galeria.html" title="">Galeria</a>
         </nav>
     </header>
     <div class="flex-main-with-aside">
