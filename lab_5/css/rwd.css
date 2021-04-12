@@ -116,7 +116,8 @@ footer {
     }
 }
 
-/*Przykład reguł z uwzględnieniem orientacji urządzenia*/
-@media only screen and (min-width: 768px ) and (max-width: 1024px) and (orientation: landscape) {
-    /* Reguły CSS poszczególnych elementów strony */
+@media screen and (orientation: portrait) {
+    body {
+        background: lightcoral;
+    }
 }
