@@ -141,7 +141,7 @@ footer {
     justify-content: space-between;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 770px) {
 
     .flex-main-with-aside {
         flex-direction: column;
