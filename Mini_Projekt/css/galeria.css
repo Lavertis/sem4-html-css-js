@@ -4,43 +4,22 @@ h2 {
 }
 
 .gallery {
-    margin-top: 1em;
-    text-align: center;
     display: flex;
-    flex-direction: row;
-    width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
-    justify-items: center;
+    justify-content: center;
 }
 
 .gallery img {
-    margin: 0.5em;
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, .7);
     border-radius: 5px;
 }
 
 .gallery .photo {
-    flex: 33%;
+    display: inline-block;
+    padding: 0 20px 20px;
 }
+
 
 .gallery img:hover {
     transform: scale(0.975);
-}
-
-@media screen and (max-width: 650px) {
-    .gallery .photo {
-        flex: 49%;
-    }
-
-    h2 {
-        margin-top: 10px;
-    }
-}
-
-@media screen and (max-width: 453px) {
-    .gallery .photo {
-        flex: 51%;
-    }
 }
