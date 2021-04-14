@@ -33,7 +33,8 @@ h2 {
 
 @media screen and (max-width: 1000px) {
     .gallery .photo {
-        width: 25%;
+        width: 29%;
+        margin: 2%;
     }
 
     .gallery {
