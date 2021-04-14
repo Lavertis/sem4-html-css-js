@@ -8,6 +8,7 @@ input[type=text], input[type=email], input[type=number], select {
     border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
     width: 100%;
+    margin: 1% auto;
 }
 
 input[type=text], input[type=email], input[type=number] {
@@ -65,4 +66,32 @@ td:last-child {
 .ripple:active {
     background-size: 100%;
     transition: background 0s;
+}
+
+@media screen and (max-width: 453px) {
+    table {
+        text-align: center;
+        margin: auto;
+    }
+
+
+    td:last-child {
+        width: 100%;
+    }
+
+    td:last-child input, select {
+        font-size: 105%;
+        padding: 1%;
+        margin-top: 2%;
+        margin-bottom: 3%;
+    }
+
+    td {
+        display: inline-block;
+        width: 100%;
+    }
+
+    td > input {
+        text-align: center;
+    }
 }
