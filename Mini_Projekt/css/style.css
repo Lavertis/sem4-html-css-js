@@ -167,6 +167,14 @@ footer {
         font-size: 110%;
     }
 
+    .dropdown-content > a {
+        text-align: center;
+    }
+
+    .dropdown-content {
+        width: 100%;
+    }
+
     main {
         margin: 4%;
     }
@@ -193,11 +201,7 @@ footer {
     .dropdown-content {
         background: #bcdfff;
     }
-
-    .dropdown-content > a {
-        text-align: center;
-    }
-
+    
     h2 {
         margin-top: 5%;
     }
