@@ -69,7 +69,7 @@ nav a:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    width: 130%;
+    width: 120%;
 }
 
 .dropdown-content > a {
