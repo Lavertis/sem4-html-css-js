@@ -59,7 +59,7 @@ th:last-of-type {
     border-radius: 0 15px 0 0;
 }
 
-#no-border-radius > th {
+.no-border-radius > th {
     border-radius: 0;
 }
 
