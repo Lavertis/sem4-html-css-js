@@ -92,6 +92,8 @@ nav a:hover {
     width: 99%;
     margin: auto;
     border-radius: 5px;
+    position: relative;
+    min-height: 98vh;
 }
 
 header > h1 {
@@ -117,8 +119,11 @@ aside {
     margin-right: 2%;
 }
 
+.content {
+    padding-bottom: 2rem;
+}
+
 footer {
-    width: 100%;
     padding: 5px 0 5px 0;
     background: #000040;
     color: #8080ff;
@@ -126,6 +131,9 @@ footer {
     border-radius: 5px;
     font-weight: bold;
     letter-spacing: 1px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .box {
@@ -148,6 +156,12 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 1250px) {
+    .dropdown-content {
+        width: 130%;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -201,7 +215,7 @@ footer {
     .dropdown-content {
         background: #bcdfff;
     }
-    
+
     h2 {
         margin-top: 5%;
     }
