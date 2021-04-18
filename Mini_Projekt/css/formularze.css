@@ -11,6 +11,10 @@ input[type=text], input[type=email], input[type=number], select {
     margin: 1% auto;
 }
 
+input[type=number], select {
+    width: fit-content;
+}
+
 input[type=text], input[type=email], input[type=number] {
     padding-left: 2%;
 }
@@ -69,6 +73,7 @@ td:last-child {
 }
 
 @media screen and (max-width: 453px) {
+
     table {
         text-align: center;
         margin: auto;
@@ -80,7 +85,7 @@ td:last-child {
     }
 
     td:last-child input, select {
-        font-size: 105%;
+        font-size: 95%;
         padding: 1%;
         margin-top: 2%;
         margin-bottom: 3%;
