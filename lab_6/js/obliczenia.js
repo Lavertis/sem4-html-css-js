@@ -8,6 +8,8 @@ function calculate() {
     const denominator = 1 - 1 / Math.pow(1 + monthlyInterestRate / 100, numberOfInstallments);
     const installment = numerator / denominator;
     const finalAmount = numberOfInstallments * installment;
+    if (!isFinite(installment) || !isFinite(finalAmount))
+        return
     installmentInput.value = installment.toFixed(2);
     finalAmountInput.value = finalAmount.toFixed(2);
 }
