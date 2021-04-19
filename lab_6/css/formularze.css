@@ -1,0 +1,104 @@
+input[type=text], input[type=email], input[type=number], select {
+    color: #34495e;
+    background-color: #d0e7f8;
+    padding: 2px;
+    overflow: hidden;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
+    width: 100%;
+    margin: 1% auto;
+}
+
+input[type=number], select {
+    width: fit-content;
+}
+
+input[type=checkbox] {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
+}
+
+input:hover, select:hover {
+    background-color: #c4e4ff;
+}
+
+input:focus, select:focus {
+    background-color: #b5e3fd;
+}
+
+td {
+    white-space: nowrap;
+}
+
+td:first-child {
+    text-align: right;
+    margin-right: 20%;
+}
+
+td:last-child {
+    width: 75%;
+}
+
+.btn {
+    font-size: 90%;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 2px 2px;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
+    outline: none;
+    text-align: center;
+}
+
+.btn.blue {
+    color: white;
+    background-color: #007dff;
+}
+
+.btn.blue:hover {
+    background-color: #005dc3;
+}
+
+.ripple {
+    transition: background 0.5s;
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+}
+
+.ripple:active {
+    background-size: 100%;
+    transition: background 0s;
+}
+
+@media screen and (max-width: 453px) {
+
+    table {
+        text-align: center;
+        margin: auto;
+    }
+
+
+    td:last-child {
+        width: 100%;
+    }
+
+    td:last-child input, select {
+        font-size: 95%;
+        padding: 1%;
+        margin-top: 2%;
+        margin-bottom: 3%;
+    }
+
+    td {
+        display: inline-block;
+        width: 100%;
+        text-align: center !important;
+    }
+
+    td > input {
+        text-align: center;
+    }
+}
