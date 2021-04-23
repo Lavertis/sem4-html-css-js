@@ -65,10 +65,15 @@ function pokazPost() {
     //użytkownika zostaną przekazane mailem na wskazany adres, ale najpierw po
     //zajściu zdarzenia submit (wyślij) – zostanie wywołana funkcja pokazDane()
     let tresc = '<h2><br>Dodaj post</h2>';
-    tresc += '<article class="srodek" ><form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post" ' +
-        'onsubmit="return pokazDane();">' + 'Twój email:<br> <input type="email" name="email" id="email" required />' +
-        '<br>' + 'Wiadomość: <br><textarea rows="3" cols="20" id="wiadomosc" name="wiadomosc" required></textarea>' +
-        '<br> <input type="submit" name="wyslij" value="Wyślij" />' + '</form></article>';
+    tresc += ' <article class="srodek" >' +
+        ' <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post" onsubmit="pokazDane()">' +
+        ' Twój email:<br> <input type="email" name="email" id="email" required /> <br>' +
+        ' Nazwisko i imie:<br> <input type="text" name="name-surname" id="name-surname" required /> <br>' +
+        ' Telefon:<br> <input type="number" name="phone" id="phone" min="0" required /> <br><br><br>' +
+        ' Wiadomość: <br> <textarea rows="3" cols="20" id="wiadomosc" name="wiadomosc" required></textarea> <br>' +
+        ' <input type="submit" name="wyslij" value="Wyślij" />' +
+        ' </form>' +
+        ' </article>';
     return tresc;
 }
 
@@ -76,9 +81,13 @@ function pokazDane() {
     //Funkcja zbiera dane wpisane w pola formularza i wyświetla okienko
     //typu confirm do zatwierdzenia przez użytkownika:
     const email = document.getElementById('email').value;
+    const nameSurname = document.getElementById('name-surname').value;
+    const phoneNumber = document.getElementById('phone').value;
     const comment = document.getElementById('wiadomosc').value
     let dane = "Następujące dane zostaną wysłane:\n";
     dane += "Email: " + email + "\n";
+    dane += "Nazwisko i imię: " + nameSurname + "\n";
+    dane += "Telefon: " + phoneNumber + "\n";
     dane += "Wiadomość: " + comment + "\n";
     return window.confirm(dane);
 }
