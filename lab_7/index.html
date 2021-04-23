@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Przykłady Java Script</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/funkcje.js"></script>
+
+</head>
+<body>
+<header>
+    <h1>Aplikacja SPA</h1>
+    <nav>
+        <button onclick="pokaz(1)">Pierwsze kroki</button>
+        <button onclick="pokaz(2)">Galeria</button>
+        <button onclick="pokaz(3)">Dodaj post</button>
+        <button onclick="pokaz(4)">Kontakt</button>
+    </nav>
+</header>
+<section id="blok">
+    <h2><br/>Pierwsze kroki</h2>
+    <p>
+        W aplikacjach typu SPA (ang. Single Page Application) po przesłaniu pierwszego żądania, również dochodzi do
+        odesłania początkowego dokumentu HTML do przeglądarki, jednak po zakończeniu inicjalizacji wszelkie działania
+        użytkownika prowadzą tylko do wysłania żądań asynchronicznie (w tle za pomocą AJAX). Odpowiedziami na te żądania
+        zwykle są tylko fragmenty kodu HTML (zamiast całych dokumentów), a niekiedy wyłącznie dane, które następnie są
+        wstawiane/zamieniane w ramach istniejących elementów dokumentu HTML. Nigdy nie dochodzi do zamiany całego
+        dokumentu HTML.
+    </p>
+    <p class="srodek">
+        <img alt="Zdjęcie" src="images/baner.jpg"/>
+    </p>
+    <article>
+        <h2>Wady SPA</h2>
+        <p>
+            Czas wytworzenia oraz nakład pracy włożony w stworzenie aplikacji jest większy, co wiąże ze sobą dodatkowe
+            koszta, dlatego tworzenie małych stron jest nieopłacalne — efekt dla strony z jedną zakładką jest
+            niezauważalny. Pozycjonowanie stron wymaga większego nakładu pracy. Obecne roboty indeksujące Google nie
+            radzą sobie ze stronami tego typu, co wiąże się z koniecznością tworzenia rozwiązań przystosowanych dla
+            robotów.
+        </p>
+    </article>
+</section>
+<footer>&copy;BP</footer>
+</body>
+</html>
