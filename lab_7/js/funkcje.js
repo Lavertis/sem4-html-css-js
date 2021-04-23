@@ -69,7 +69,17 @@ function pokazPost() {
         ' <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post" onsubmit="pokazDane()">' +
         ' Twój email:<br> <input type="email" name="email" id="email" required /> <br>' +
         ' Nazwisko i imie:<br> <input type="text" name="name-surname" id="name-surname" required /> <br>' +
-        ' Telefon:<br> <input type="number" name="phone" id="phone" min="0" required /> <br><br><br>' +
+        ' Telefon:<br> <input type="tel" name="phone" id="phone" required /> <br><br>' +
+        ' Zainteresowania: <br> <input type="checkbox" name="interest" id="interest-sport" value="sport"> Sport' +
+        ' <input type="checkbox" name="interest" id="interest-music" value="muzyka"> Muzyka' +
+        ' <input type="checkbox" name="interest" id="interest-movie" value="film"> Film' +
+        ' <input type="checkbox" name="interest" id="interest-other" value="inne"> Inne <br><br>' +
+        ' Wiek: <br> <input type="radio" name="age" id="10-" required> Mniej niż 10' +
+        ' <input type="radio" name="age" value="10-20"> 10-20' +
+        ' <input type="radio" name="age" id="21-30"> 21-30' +
+        ' <input type="radio" name="age" id="31-40"> 31-40' +
+        ' <input type="radio" name="age" id="41-50"> 41-50' +
+        ' <input type="radio" name="age" id="50+"> Więcej niż 50 <br><br>' +
         ' Wiadomość: <br> <textarea rows="3" cols="20" id="wiadomosc" name="wiadomosc" required></textarea> <br>' +
         ' <input type="submit" name="wyslij" value="Wyślij" />' +
         ' </form>' +
@@ -84,10 +94,20 @@ function pokazDane() {
     const nameSurname = document.getElementById('name-surname').value;
     const phoneNumber = document.getElementById('phone').value;
     const comment = document.getElementById('wiadomosc').value
+    const interests = document.getElementsByName('interest');
+    const ageRadioButtons = document.getElementsByName('age');
+    let age;
+    ageRadioButtons.forEach(element => element.checked ? age = element.id : {});
     let dane = "Następujące dane zostaną wysłane:\n";
     dane += "Email: " + email + "\n";
     dane += "Nazwisko i imię: " + nameSurname + "\n";
     dane += "Telefon: " + phoneNumber + "\n";
+    dane += "Zainteresowania: ";
+    interests.forEach(element => element.checked ? dane += element.value + ", " : {});
+    if (dane.endsWith(", "))
+        dane = dane.slice(0, -2);
+    dane += "\n";
+    dane += "Wiek: " + age + "\n";
     dane += "Wiadomość: " + comment + "\n";
     return window.confirm(dane);
 }
