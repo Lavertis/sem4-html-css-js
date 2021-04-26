@@ -80,6 +80,13 @@ function pokazPost() {
         ' <input type="radio" name="age" id="31-40"> 31-40' +
         ' <input type="radio" name="age" id="41-50"> 41-50' +
         ' <input type="radio" name="age" id="50+"> Więcej niż 50 <br><br>' +
+        ' <label for="cars">Choose a car:</label><br>' +
+        ' <select name="cars" id="cars" multiple required>' +
+        ' <option name="car" value="volvo">Volvo</option>' +
+        ' <option name="car" value="saab">Saab</option>' +
+        ' <option name="car" value="opel">Opel</option>' +
+        ' <option name="car" value="audi">Audi</option>' +
+        ' </select><br><br>' +
         ' Wiadomość: <br> <textarea rows="3" cols="20" id="wiadomosc" name="wiadomosc" required></textarea> <br>' +
         ' <input type="submit" name="wyslij" value="Wyślij" />' +
         ' </form>' +
@@ -96,6 +103,7 @@ function pokazDane() {
     const comment = document.getElementById('wiadomosc').value
     const interests = document.getElementsByName('interest');
     const ageRadioButtons = document.getElementsByName('age');
+    const cars = document.getElementsByName('car');
     let age;
     ageRadioButtons.forEach(element => element.checked ? age = element.id : {});
     let dane = "Następujące dane zostaną wysłane:\n";
@@ -104,6 +112,11 @@ function pokazDane() {
     dane += "Telefon: " + phoneNumber + "\n";
     dane += "Zainteresowania: ";
     interests.forEach(element => element.checked ? dane += element.value + ", " : {});
+    if (dane.endsWith(", "))
+        dane = dane.slice(0, -2);
+    dane += "\n";
+    dane += "Samochody: ";
+    cars.forEach(element => element.selected ? dane += element.value + ", " : {});
     if (dane.endsWith(", "))
         dane = dane.slice(0, -2);
     dane += "\n";
