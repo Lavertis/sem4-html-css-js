@@ -17,6 +17,35 @@ function isAnyCheckboxChecked(checkboxGroupName) {
     return false;
 }
 
+function getCheckedRadio(radioGroupName) {
+    const radioButtons = document.getElementsByName(radioGroupName);
+    for (const radioButton of radioButtons)
+        if (radioButton.checked) return radioButton;
+    return null
+}
+
+function confirmData() {
+    let data = "";
+    const surname = document.getElementById("surname").value;
+    const age = document.getElementById("age").value;
+    const email = document.getElementById("email").value;
+    let tutorials = "";
+    for (const tutorial of document.getElementsByName("product")) {
+        if (tutorial.checked)
+            tutorials += `${tutorial.value}, `
+    }
+    document.getElementsByName("product").forEach(checkbox => checkbox.checked)
+    if (tutorials.endsWith(", "))
+        tutorials = tutorials.slice(0, -2);
+    const payment = getCheckedRadio("payment").value;
+    data += `Nazwisko: ${surname}\n`;
+    data += `Wiek: ${age}\n`;
+    data += `E-mail: ${email}\n`;
+    data += `Wybrane tutoriale: ${tutorials}\n`;
+    data += `Sposób zapłaty: ${payment}\n`;
+    return window.confirm(data);
+}
+
 function isFormValid() {
     let valid = true;
     const patternSurname = /^[a-zA-Zęóąśłżźćń]{2,20}$/;
@@ -39,8 +68,8 @@ function isFormValid() {
     } else document.getElementById("age-error").innerHTML = "";
 
     if (!isRadioChecked("payment")) {
-        valid = false;
-        document.getElementById("payment-error").innerHTML = "Wybierz sposób płatności";
+        document.getElementById("visa").checked = "checked";
+        document.getElementById("payment-error").innerHTML = "Wybrano domyślny sposób płatności";
     } else document.getElementById("payment-error").innerHTML = "";
 
     if (!isAnyCheckboxChecked("product")) {
@@ -48,7 +77,10 @@ function isFormValid() {
         document.getElementById("product-error").innerHTML = "Nie wybrałeś żadnego produktu";
     } else document.getElementById("product-error").innerHTML = "";
 
-    return valid;
+    if (!valid)
+        return false;
+
+    return confirmData();
 }
 
 function clearErrorMessages() {
