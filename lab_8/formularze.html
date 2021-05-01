@@ -5,6 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title> Szybki kurs HTML </title>
     <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/walidacja.js"></script>
 </head>
 <body>
 <div id="kontener">
@@ -35,21 +36,22 @@
         </ul>
         <div>
             <h3>Przykładowy formularz HTML:</h3>
-            <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post" onsubmit="sprawdz()">
+            <form action="mailto:abc@abc.ab" method="post" onreset="clearErrorMessages()"
+                  onsubmit="return isFormValid()">
                 <table>
                     <tr>
-                        <td><label for="nazw">Nazwisko:</label></td>
-                        <td><input id="nazw" name="nazw" size="30"/></td>
-                        <td class="czerwone" id="nazw_error"></td>
+                        <td><label for="surname">Nazwisko:</label></td>
+                        <td><input id="surname" name="surname" size="30"/></td>
+                        <td class="red" id="surname-error"></td>
                     </tr>
                     <tr>
-                        <td><label for="wiek">Wiek:</label></td>
-                        <td><input id="wiek" name="wiek" size="30"/></td>
-                        <td class="czerwone" id="wiek_error"></td>
+                        <td><label for="age">Wiek:</label></td>
+                        <td><input id="age" name="age" size="30"/></td>
+                        <td class="red" id="age-error"></td>
                     </tr>
                     <tr>
-                        <td><label for="kraj">Państwo:</label></td>
-                        <td><select id="kraj" name="kraj">
+                        <td><label for="country">Państwo:</label></td>
+                        <td><select id="country" name="country">
                             <option selected="selected" value="pl">Polska</option>
                             <option value="gb">Wielka Brytania</option>
                         </select>
@@ -58,25 +60,25 @@
                     <tr>
                         <td><label for="email">Adres e-mail:</label></td>
                         <td><input id="email" name="email" size="30"/></td>
-                        <td class="czerwone" id="email_error"></td>
+                        <td class="red" id="email-error"></td>
                     </tr>
                 </table>
                 <h4>Zamawiam tutorial z języka:</h4>
-                <p><input id="php" name="php" type="checkbox"/>
+                <p><input id="php" name="product" type="checkbox" value="php"/>
                     <label for="php">PHP</label>
-                    <input id="c" name="c" type="checkbox"/>
+                    <input id="c" name="product" type="checkbox" value="c"/>
                     <label for="c">C/C++</label>
-                    <input id="java" name="java" type="checkbox"/>
+                    <input id="java" name="product" type="checkbox" value="java"/>
                     <label for="java">Java</label>
-                    <span class="czerwone" id="produkt_error"></span></p>
+                    <span class="red" id="product-error"></span></p>
                 <h4>Sposób zapłaty:</h4>
-                <p><input id="euro" name="zaplata" type="radio" value="euro"/>
+                <p><input id="euro" name="payment" type="radio" value="euro"/>
                     <label for="euro">eurocard</label>
-                    <input id="visa" name="zaplata" type="radio" value="visa"/>
+                    <input id="visa" name="payment" type="radio" value="visa"/>
                     <label for="visa">visa</label>
-                    <input id="przelew" name="zaplata" type="radio" value="przelew"/>
-                    <label for="przelew">przelew bankowy</label>
-                    <span class="czerwone" id="zaplata_error"></span><br/>
+                    <input id="transfer" name="payment" type="radio" value="transfer"/>
+                    <label for="transfer">przelew bankowy</label>
+                    <span class="red" id="payment-error"></span><br/><br/>
                     <input type="submit" value=" Wyślij "/>
                     <input type="reset" value=" Anuluj "/></p>
             </form>
