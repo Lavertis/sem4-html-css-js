@@ -66,7 +66,7 @@ function pokazPost() {
     //zajściu zdarzenia submit (wyślij) – zostanie wywołana funkcja pokazDane()
     let tresc = '<h2><br>Dodaj post</h2>';
     tresc += ' <article class="srodek" >' +
-        ' <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post" onsubmit="pokazDane()">' +
+        ' <form action="mailto:rafal.kuzmiczuk@pollub.edu.pl" method="post" onsubmit="return pokazDane()">' +
         ' Twój email:<br> <input type="email" name="email" id="email" required /> <br>' +
         ' Nazwisko i imie:<br> <input type="text" name="name-surname" id="name-surname" required /> <br>' +
         ' Telefon:<br> <input type="tel" name="phone" id="phone" required /> <br><br>' +
