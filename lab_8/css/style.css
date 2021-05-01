@@ -1,0 +1,131 @@
+body {
+    background: #4ae;
+    color: #000040;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, #stopka {
+    background: #000040;
+    color: #8080ff;
+    text-align: center;
+}
+
+#naglowek {
+    text-align: center;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+#galeria img {
+    margin: 0.5em;
+}
+
+#kontener {
+    background-color: white;
+    width: 90%;
+    margin: auto;
+}
+
+/*Nowa nawigacja*/
+#nav {
+    text-align: left;
+    overflow: hidden;
+    font-family: calibri, tahoma, sans-serif;
+}
+
+ul#nav li {
+    border: 1px solid #d5d5d5;
+    list-style-type: none;
+    float: left;
+    background: #98bed8;
+    margin-left: 3px;
+}
+
+ul#nav li:hover {
+    border: 1px solid #d5d5d5;
+    list-style-type: none;
+    float: left;
+    background: #f0f0f0;
+    margin-left: 3px;
+}
+
+ul#nav li a {
+    display: block;
+    padding: 4pt;
+    text-decoration: none;
+}
+
+ul#nav li li a {
+    width: 160px;
+}
+
+ul#nav li li:hover {
+    background: white;
+}
+
+ul#nav li ul {
+    overflow: hidden;
+    display: none;
+}
+
+ul#nav li:hover ul {
+    position: absolute;
+    background: #aaa;
+    padding: 0;
+    display: block;
+    width: 177px;
+}
+
+/*Pozycjonowanie elementów na stronie */
+#pasek {
+    float: right;
+    width: 20%;
+    padding: 1%;
+}
+
+#stopka {
+    clear: both;
+    width: 100%;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+
+#tresc {
+    background: lightblue;
+    float: left;
+    width: 74%;
+    padding: 1%;
+}
+
+#galeria {
+    text-align: center;
+}
+
+#pasek {
+    float: right;
+    width: 22%;
+    padding: 1%;
+}
+
+#stopka {
+    clear: both;
+    width: 100%;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+
+*.box {
+    background: #0000a0;
+    color: #dbffff;
+    padding: 10px;
+    margin: 5px;
+    font-size: 90%;
+}
+
+*.box a {
+    color: #ffffb0;
+}
