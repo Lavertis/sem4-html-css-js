@@ -75,7 +75,7 @@ function pokazPost() {
         ' <input type="checkbox" name="interest" id="interest-movie" value="film"> Film' +
         ' <input type="checkbox" name="interest" id="interest-other" value="inne"> Inne <br><br>' +
         ' Wiek: <br> <input type="radio" name="age" id="10-" required> Mniej niż 10' +
-        ' <input type="radio" name="age" value="10-20"> 10-20' +
+        ' <input type="radio" name="age" id="10-20"> 10-20' +
         ' <input type="radio" name="age" id="21-30"> 21-30' +
         ' <input type="radio" name="age" id="31-40"> 31-40' +
         ' <input type="radio" name="age" id="41-50"> 41-50' +
