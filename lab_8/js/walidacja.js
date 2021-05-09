@@ -88,4 +88,5 @@ function clearErrorMessages() {
     document.getElementById("email-error").innerHTML = "";
     document.getElementById("age-error").innerHTML = "";
     document.getElementById("payment-error").innerHTML = "";
+    document.getElementById("product-error").innerHTML = "";
 }
