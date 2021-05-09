@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Dostęp do pól formularza</title>
+    <script src="js/funkcje.js"></script>
+</head>
+<body>
+<div><h3>Dodawanie</h3>
+    <!-- Elementy formularza (pola tekstowe i przycisk) zostały umieszczone
+    w polach tabeli; każde pole formularza posiada unikatowe id, dzięki
+    któremu możemy w JavaScript zastosować metodę getElementById -->
+    <table>
+        <tbody>
+        <tr>
+            <td><label for="l1">Liczba 1:</label></td>
+            <td><input id="l1"/></td>
+        </tr>
+        <tr>
+            <td><label for="l2">Liczba 2:</label></td>
+            <td><label for="l2"></label><input id="l2"/></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="oblicz()">Oblicz sumę</button>
+            </td>
+            <!-- Pole wynikowe suma posiada dodatkowy atrybut disabled, dzieki
+            czemu tylko metoda obliczeniowa w JavaScript ma możliwość ustawiania
+            wyniku - dla użytkownika strony pole jest niedostępne -->
+            <td><label for="suma"></label><input disabled id="suma" value=""/></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
