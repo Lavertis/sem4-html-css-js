@@ -34,64 +34,58 @@ function getCheckedCheckboxes(checkboxGroupName) {
 
 function confirmData() {
     let data = "Dane z wypełnionego przez Ciebie formularza:\n";
-    const surname = document.getElementById("surname").value;
-    const age = document.getElementById("age").value;
-    const country = document.getElementById("country").value;
-    const email = document.getElementById("email").value;
-    let tutorials = "";
-    getCheckedCheckboxes("product").forEach(tutorial => tutorials += `${tutorial.value}, `)
-    tutorials = tutorials.slice(0, -2);
+    const surname = $("#surname").val();
+    const age = $("#age").val();
+    const country = $("#country").val();
+    const email = $("#email").val();
+    let products = "";
+    getCheckedCheckboxes("product").forEach(product => products += `${product.value}, `)
+    products = products.slice(0, -2);
     const payment = getCheckedRadio("payment").value;
     data += `Nazwisko: ${surname}\n`;
     data += `Wiek: ${age}\n`;
     data += `Kraj: ${country}\n`;
     data += `E-mail: ${email}\n`;
-    data += `Wybrane produkty: ${tutorials}\n`;
+    data += `Wybrane produkty: ${products}\n`;
     data += `Sposób zapłaty: ${payment}\n`;
     return window.confirm(data);
 }
 
 function isFormValid() {
-    let valid = true;
-    const patternSurname = /^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$/;
-    const patternEmail = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)])/;
-    const patternAge = /^[1-9][0-9]$/;
-
-    if (!isFieldValid("surname", patternSurname)) {
-        valid = false;
-        document.getElementById("surname-error").innerHTML = "Wpisz poprawnie nazwisko";
-    } else document.getElementById("surname-error").innerHTML = "";
-
-    if (!isFieldValid("email", patternEmail)) {
-        valid = false;
-        document.getElementById("email-error").innerHTML = "Wpisz poprawny adres e-mail";
-    } else document.getElementById("email-error").innerHTML = "";
-
-    if (!isFieldValid("age", patternAge)) {
-        valid = false;
-        document.getElementById("age-error").innerHTML = "Wpisz poprawny wiek";
-    } else document.getElementById("age-error").innerHTML = "";
-
+    clearErrorMessages()
+    let formValid = true;
+    const patternsMap = new Map([
+        ["surname", /^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$/],
+        ["email", /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/],
+        ["age", /^[1-9][0-9]$/]
+    ])
+    if (!isFieldValid("surname", patternsMap.get("surname"))) {
+        formValid = false;
+        $("#surname-error").html("Wpisz poprawnie nazwisko");
+    }
+    if (!isFieldValid("email", patternsMap.get("email"))) {
+        formValid = false;
+        $("#email-error").html("Wpisz poprawny adres e-mail");
+    }
+    if (!isFieldValid("age", patternsMap.get("age"))) {
+        formValid = false;
+        $("#age-error").html("Wpisz poprawny wiek");
+    }
     if (!isRadioChecked("payment")) {
-        document.getElementById("visa").checked = "checked";
-        document.getElementById("payment-error").innerHTML = "Wybrano domyślny sposób płatności";
-    } else document.getElementById("payment-error").innerHTML = "";
-
+        $("#visa").prop("checked", true);
+        $("#payment-error").html("Wybrano domyślny sposób płatności");
+    }
     if (!isAnyCheckboxChecked("product")) {
-        valid = false;
-        document.getElementById("product-error").innerHTML = "Nie wybrałeś żadnego produktu";
-    } else document.getElementById("product-error").innerHTML = "";
+        formValid = false;
+        $("#product-error").html("Nie wybrałeś żadnego produktu");
+    }
 
-    if (!valid)
+    if (!formValid)
         return false;
 
     return confirmData();
 }
 
 function clearErrorMessages() {
-    document.getElementById("surname-error").innerHTML = "";
-    document.getElementById("email-error").innerHTML = "";
-    document.getElementById("age-error").innerHTML = "";
-    document.getElementById("payment-error").innerHTML = "";
-    document.getElementById("product-error").innerHTML = "";
+    $("[id$='-error']").html("");
 }
