@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Web storage</title>
+    <script src="js/koszyk.js"></script>
+</head>
+<body>
+<div>
+    <h2>Koszyk na produkty</h2>
+    <table>
+        <tr>
+            <td><label for="product-name">Nazwa produktu:</label></td>
+            <td><input id="product-name" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="product-price">Cena:</label></td>
+            <td><input id="product-price" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="product-colour">Kolor:</label></td>
+            <td><input id="product-colour" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="product-quantity">Liczba sztuk:</label></td>
+            <td><input id="product-quantity" type="text"></td>
+        </tr>
+    </table>
+    <br>
+    <button id="saveBtn">Zapisz produkt do koszyka</button>
+    <button id="showBtn">Wyświetl koszyk</button>
+    <button id="clearBtn">Usuń wszystkie produkty</button>
+    <br><br>
+    <div id="basket-container"></div>
+</div>
+</body>
+</html>
