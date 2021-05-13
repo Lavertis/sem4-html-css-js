@@ -5,15 +5,8 @@ function isFieldValid(fieldID, regexPattern) {
 
 function isRadioChecked(radioGroupName) {
     const radioButtons = document.getElementsByName(radioGroupName);
-    for (let i = 0; i < radioButtons.length; i++)
-        if (radioButtons[i].checked) return true;
-    return false;
-}
-
-function isAnyCheckboxChecked(checkboxGroupName) {
-    const checkboxes = document.getElementsByName(checkboxGroupName);
-    for (const checkbox of checkboxes)
-        if (checkbox.checked) return true;
+    for (const radioButton of radioButtons)
+        if (radioButton.checked) return true;
     return false;
 }
 
@@ -24,33 +17,45 @@ function getCheckedRadio(radioGroupName) {
     return null
 }
 
+function isAnyCheckboxChecked(checkboxGroupName) {
+    const checkboxes = document.getElementsByName(checkboxGroupName);
+    for (const checkbox of checkboxes)
+        if (checkbox.checked) return true;
+    return false;
+}
+
+function getCheckedCheckboxes(checkboxGroupName) {
+    const checkboxes = document.getElementsByName(checkboxGroupName);
+    let checkedCheckboxes = [];
+    for (const checkbox of checkboxes)
+        if (checkbox.checked) checkedCheckboxes.push(checkbox);
+    return checkedCheckboxes;
+}
+
 function confirmData() {
-    let data = "";
+    let data = "Dane z wypełnionego przez Ciebie formularza:\n";
     const surname = document.getElementById("surname").value;
     const age = document.getElementById("age").value;
+    const country = document.getElementById("country").value;
     const email = document.getElementById("email").value;
     let tutorials = "";
-    for (const tutorial of document.getElementsByName("product")) {
-        if (tutorial.checked)
-            tutorials += `${tutorial.value}, `
-    }
-    document.getElementsByName("product").forEach(checkbox => checkbox.checked)
-    if (tutorials.endsWith(", "))
-        tutorials = tutorials.slice(0, -2);
+    getCheckedCheckboxes("product").forEach(tutorial => tutorials += `${tutorial.value}, `)
+    tutorials = tutorials.slice(0, -2);
     const payment = getCheckedRadio("payment").value;
     data += `Nazwisko: ${surname}\n`;
     data += `Wiek: ${age}\n`;
+    data += `Kraj: ${country}\n`;
     data += `E-mail: ${email}\n`;
-    data += `Wybrane tutoriale: ${tutorials}\n`;
+    data += `Wybrane produkty: ${tutorials}\n`;
     data += `Sposób zapłaty: ${payment}\n`;
     return window.confirm(data);
 }
 
 function isFormValid() {
     let valid = true;
-    const patternSurname = /^[a-zA-Zęóąśłżźćń]{2,20}$/;
-    const patternEmail = /^([a-zA-Z0-9])+([.a-zA-Z0-9_-])*@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-]+)+/;
-    const patternAge = /^[1-9][0-9]{1,2}$/;
+    const patternSurname = /^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$/;
+    const patternEmail = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)])/;
+    const patternAge = /^[1-9][0-9]$/;
 
     if (!isFieldValid("surname", patternSurname)) {
         valid = false;

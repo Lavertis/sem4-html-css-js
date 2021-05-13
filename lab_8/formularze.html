@@ -5,105 +5,125 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title> Szybki kurs HTML </title>
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <script src="js/walidacja.js"></script>
+    <link href="css/formularze.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="js/validation.js"></script>
 </head>
 <body>
-<div id="kontener">
-    <div id="baner"><h1> Szybki kurs HTML </h1></div>
-    <div id="menu">
-        <ul id="nav">
-            <li><a href="index.html">Podstawy</a></li>
-            <li><a href="tabele.html">Tabele</a></li>
-            <li><a href="">Formularze</a>
-                <ul>
-                    <li><a href="formularze.html">Pola formularza</a></li>
-                    <li><a href="obliczenia.html">Obliczenia w formularzu</a></li>
-                </ul>
-            </li>
-            <li><a href="galeria.html" title="">Galeria</a></li>
-        </ul>
-    </div>
-    <div id="tresc">
-        <h3>Podstawowe znaczniki formularza HTML to:</h3>
-        <ul>
-            <li> &lt;form&gt; - znacznik podstawowy zawierający pola formularza</li>
-            <li> &lt;input&gt; - znacznik umożliwia wstawienie różnych pól (pole tekstowe, przycisk typu radio, przycisk
-                typu checkbox) w zależności od wartości jego atrybutu type
-            </li>
-            <li> &lt;select&gt; - pole formularza typu lista rozwijana</li>
-            <li> &lt;textarea&gt; - pole formularza typu obszar tekstowy</li>
-            <li> &lt;button&gt; - pole formularza typu przycisk</li>
-        </ul>
-        <div>
-            <h3>Przykładowy formularz HTML:</h3>
-            <form action="mailto:abc@abc.ab" method="post" onreset="clearErrorMessages()"
-                  onsubmit="return isFormValid()">
-                <table>
-                    <tr>
-                        <td><label for="surname">Nazwisko:</label></td>
-                        <td><input id="surname" name="surname" size="30"/></td>
-                        <td class="red" id="surname-error"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="age">Wiek:</label></td>
-                        <td><input id="age" name="age" size="30"/></td>
-                        <td class="red" id="age-error"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="country">Państwo:</label></td>
-                        <td><select id="country" name="country">
-                            <option selected="selected" value="pl">Polska</option>
-                            <option value="gb">Wielka Brytania</option>
-                        </select>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td><label for="email">Adres e-mail:</label></td>
-                        <td><input id="email" name="email" size="30"/></td>
-                        <td class="red" id="email-error"></td>
-                    </tr>
-                </table>
-                <h4>Zamawiam tutorial z języka:</h4>
-                <p><input id="php" name="product" type="checkbox" value="php"/>
-                    <label for="php">PHP</label>
-                    <input id="c" name="product" type="checkbox" value="c/c++"/>
-                    <label for="c">C/C++</label>
-                    <input id="java" name="product" type="checkbox" value="java"/>
-                    <label for="java">Java</label>
-                    <span class="red" id="product-error"></span></p>
-                <h4>Sposób zapłaty:</h4>
-                <p><input id="eurocard" name="payment" type="radio" value="eurocard"/>
-                    <label for="eurocard">eurocard</label>
-                    <input id="visa" name="payment" type="radio" value="visa"/>
-                    <label for="visa">visa</label>
-                    <input id="transfer" name="payment" type="radio" value="transfer"/>
-                    <label for="transfer">przelew bankowy</label>
-                    <span class="red" id="payment-error"></span><br/><br/>
-                    <input type="submit" value=" Wyślij "/>
-                    <input type="reset" value=" Anuluj "/></p>
-            </form>
+<div id="container">
+    <div class="content">
+        <header>
+            <h1> Szybki kurs HTML </h1>
+            <nav>
+                <a href="index.html">Podstawy</a>
+                <a href="tabele.html">Tabele</a>
+                <div class="dropdown">
+                    <a href="">Formularze</a>
+                    <div class="dropdown-content">
+                        <a href="formularze.html">Pola formularza</a>
+                        <a href="#">Obliczenia w formularzu</a>
+                    </div>
+                </div>
+                <a href="galeria.html" title="">Galeria</a>
+            </nav>
+        </header>
+        <div class="flex-main-with-aside">
+            <main>
+                <section>
+                    <h3>Podstawowe znaczniki formularza HTML to:</h3>
+                    <ul>
+                        <li> &lt;form&gt; - znacznik podstawowy zawierający pola formularza</li>
+                        <li> &lt;input&gt; - znacznik umożliwia wstawienie różnych pól (pole tekstowe, przycisk typu
+                            radio,
+                            przycisk typu checkbox) w zależności od wartości jego atrybutu type
+                        </li>
+                        <li> &lt;select&gt; - pole formularza typu lista rozwijana</li>
+                        <li> &lt;textarea&gt; - pole formularza typu obszar tekstowy</li>
+                        <li> &lt;button&gt; - pole formularza typu przycisk</li>
+                    </ul>
+                </section>
+                <div>
+                    <section>
+                        <h3>Przykładowy formularz HTML:</h3>
+                        <form id="sample-form" method="post" onreset="clearErrorMessages()"
+                              onsubmit="return isFormValid()">
+                            <table style="text-align: left">
+                                <tr>
+                                    <td><label for="surname">Nazwisko:</label></td>
+                                    <td><input id="surname" name="surname" size="30" type="text"/></td>
+                                    <td class="error-red" id="surname-error"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="age">Wiek:</label></td>
+                                    <td><input id="age" name="age" size="30" type="text"/></td>
+                                    <td class="error-red" id="age-error"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="country">Państwo:</label></td>
+                                    <td><select id="country" name="country">
+                                        <option selected="selected" value="pl">Polska</option>
+                                        <option value="gb">Wielka Brytania</option>
+                                    </select>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="email">Adres e-mail:</label></td>
+                                    <td><input id="email" name="email" size="30" type="text"/></td>
+                                    <td class="error-red" id="email-error"></td>
+                                </tr>
+                            </table>
+                            <br>
+
+                            <h4>Zamawiam tutorial z języka:</h4>
+                            <div>
+                                <input id="php" name="product" type="checkbox" value="php"/><label for="php">PHP</label>
+                                <input id="c" name="product" type="checkbox" value="c"/><label for="c">C/C++</label>
+                                <input id="java" name="product" type="checkbox" value="java"/><label
+                                    for="java">Java</label>
+                                <span class="error-red" id="product-error"></span>
+                            </div>
+                            <br>
+
+                            <h4>Sposób zapłaty:</h4>
+                            <div>
+                                <input id="eurocard" name="payment" type="radio" value="eurocard"/>
+                                <label for="eurocard">eurocard</label>
+                                <input id="visa" name="payment" type="radio" value="visa"/>
+                                <label for="visa">visa</label>
+                                <input id="transfer" name="payment" type="radio" value="przelew bankowy"/>
+                                <label for="transfer">przelew bankowy</label>
+                                <span class="error-red" id="payment-error"></span>
+                            </div>
+                            <br>
+
+                            <input class="btn blue ripple" type="submit" value="Wyślij"/>
+                            <input class="btn blue ripple" type="reset" value="Wyczyść"/>
+                        </form>
+                    </section>
+                </div>
+            </main>
+            <aside>
+                <div class="box">
+                    <h3>Walidatory:</h3>
+                    <ul>
+                        <li><a href="https://validator.w3.org/">HTML </a></li>
+                        <li><a href="https://jigsaw.w3.org/css-validator/">CSS</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h3>Kursy:</h3>
+                    <ul>
+                        <li><a href="https://www.w3schools.com/html/"> HTML </a></li>
+                        <li><a href="https://www.w3schools.com/css/"> CSS </a></li>
+                        <li><a href="https://www.w3schools.com/js/"> JS </a></li>
+                        <li><a href="https://www.w3schools.com/php/"> PHP </a></li>
+                    </ul>
+                </div>
+            </aside>
         </div>
     </div>
-    <div id="pasek">
-        <div class="box">
-            <h3>Walidatory:</h3>
-            <ul>
-                <li><a href="https://validator.w3.org/">HTML </a></li>
-                <li><a href="https://jigsaw.w3.org/css-validator/">CSS</a></li>
-            </ul>
-        </div>
-        <div class="box">
-            <h3>Kursy:</h3>
-            <ul>
-                <li><a href="https://www.w3schools.com/html/"> HTML </a></li>
-                <li><a href="https://www.w3schools.com/css/"> CSS </a></li>
-                <li><a href="https://www.w3schools.com/js/"> JS </a></li>
-                <li><a href="https://www.w3schools.com/php/"> PHP </a></li>
-            </ul>
-        </div>
-    </div>
-    <div id="stopka"> &copy;RK</div>
+    <footer> &copy;RK</footer>
 </div>
 </body>
 </html>
