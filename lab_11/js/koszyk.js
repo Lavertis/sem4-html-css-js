@@ -48,6 +48,35 @@ window.onload = function () {
             showInBasket(products);
     });
 
+    function findProductKeyByName(productName) {
+        for (let i = 0; i < localStorage.length; i++) {
+            const itemKey = localStorage.key(i);
+            const productAsJson = localStorage.getItem(itemKey);
+            const itemName = JSON.parse(productAsJson).name;
+            if (itemName === productName)
+                return itemKey
+        }
+        return null;
+    }
+
+    document.getElementById("editBtn").addEventListener("click", function () {
+        const productName = document.getElementById("product-name").value;
+        const productKey = findProductKeyByName(productName);
+        if (productKey === null)
+            return;
+
+        let productJSON = JSON.parse(localStorage.getItem(productKey));
+        const newProductPrice = document.getElementById("product-price").value;
+        const newProductColour = document.getElementById("product-colour").value;
+        const newProductQuantity = document.getElementById("product-quantity").value;
+        if (newProductPrice !== "") productJSON["price"] = newProductPrice;
+        if (newProductColour !== "") productJSON["colour"] = newProductColour;
+        if (newProductQuantity !== "") productJSON["quantity"] = newProductQuantity;
+        localStorage.setItem(productKey, JSON.stringify(productJSON));
+        console.log(productJSON.toString());
+        showAllItemsInBasket();
+    });
+
     function deleteItem(productID) {
         for (let i = 0; i < localStorage.length; i++) {
             const itemKey = localStorage.key(i);
