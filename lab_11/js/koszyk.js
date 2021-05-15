@@ -17,7 +17,7 @@ window.onload = function () {
 
     document.getElementById("showBtn").addEventListener("click", function () {
         const basketContainer = document.getElementById("basket-container");
-        let content = `<div class="koszyk"><table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th></tr>`;
+        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th></tr>`;
         for (let i = 0; i < localStorage.length; i++) {
             const itemName = localStorage.key(i);
             const item = JSON.parse(localStorage.getItem(itemName));
@@ -28,7 +28,7 @@ window.onload = function () {
                         <td>${item.quantity}</td>
                         </tr>`
         }
-        content += `</table></div>`
+        content += `</table>`
         basketContainer.innerHTML = content;
     });
 
