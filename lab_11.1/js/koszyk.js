@@ -1,7 +1,7 @@
 window.onload = function () {
     if (localStorage.getItem("products") === null)
         localStorage.setItem("products", JSON.stringify([]));
-    let productsID = localStorage.getItem("products").length;
+    let productsID = JSON.parse(localStorage.getItem("products")).length;
 
     document.getElementById("saveBtn").addEventListener("click", function () {
         let currentProductList = JSON.parse(localStorage.getItem("products"));
@@ -36,6 +36,10 @@ window.onload = function () {
 
     document.getElementById("searchBtn").addEventListener("click", function () {
         clearBasket();
+        document.getElementById("product-price").value = "";
+        document.getElementById("product-colour").value = "";
+        document.getElementById("product-quantity").value = "";
+
         const productList = JSON.parse(localStorage.getItem("products"));
         const searchedName = document.getElementById("product-name").value;
         if (localStorage.length === 0 || searchedName === "")
@@ -94,7 +98,7 @@ window.onload = function () {
         const removeButtons = document.getElementsByClassName("removeItemBtn");
         for (let button of removeButtons) {
             button.addEventListener("click", function () {
-                deleteProductByID(parseInt(button.id));
+                deleteProductByID(parseInt(button.getAttribute("data-productID")));
                 showAllProductsInBasket();
             });
         }
@@ -110,7 +114,7 @@ window.onload = function () {
                         <td>${productAsObj.price}</td>
                         <td>${productAsObj.colour}</td>
                         <td>${productAsObj.quantity}</td>
-                        <td><button class="removeItemBtn" id="${productAsObj.id}">Usuń</button></td>
+                        <td><button class="removeItemBtn" data-productID="${productAsObj.id}" onclick='usunZadanie("+i+")'>Usuń</button></td>
                         </tr>`;
         }
         content += `</table>`;
