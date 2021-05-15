@@ -1,4 +1,5 @@
 window.onload = function () {
+    let productsID = localStorage.length;
 
     document.getElementById("saveBtn").addEventListener("click", function () {
         const productName = document.getElementById("product-name").value;
@@ -11,7 +12,8 @@ window.onload = function () {
         product.name = productName;
         product.price = productPrice;
         product.colour = productColour;
-        product.quantity = productQuantity
+        product.quantity = productQuantity;
+        product.id = productsID++;
         localStorage.setItem(`Product ${localStorage.length + 1}`, JSON.stringify(product));
         clearInputs();
     });
@@ -19,21 +21,14 @@ window.onload = function () {
     document.getElementById("showBtn").addEventListener("click", function () {
         clearInputs();
         clearBasket();
-        if (localStorage.length === 0)
-            return;
-        let products = [];
-        for (let i = 0; i < localStorage.length; i++) {
-            const itemName = localStorage.key(i);
-            const productAsJson = localStorage.getItem(itemName);
-            products.push(productAsJson);
-        }
-        showInBasket(products);
+        showAllItemsInBasket();
     });
 
     document.getElementById("clearBtn").addEventListener("click", function () {
         localStorage.clear();
         clearBasket();
         clearInputs();
+        productsID = 0;
     });
 
     document.getElementById("searchBtn").addEventListener("click", function () {
@@ -43,8 +38,8 @@ window.onload = function () {
             return;
         let products = [];
         for (let i = 0; i < localStorage.length; i++) {
-            const itemName = localStorage.key(i);
-            const productAsJson = localStorage.getItem(itemName);
+            const itemKey = localStorage.key(i);
+            const productAsJson = localStorage.getItem(itemKey);
             if (!JSON.parse(productAsJson).name.includes(searchedName))
                 continue;
             products.push(productAsJson);
@@ -53,9 +48,31 @@ window.onload = function () {
             showInBasket(products);
     });
 
+    function deleteItem(productID) {
+        for (let i = 0; i < localStorage.length; i++) {
+            const itemKey = localStorage.key(i);
+            const productAsJson = localStorage.getItem(itemKey);
+            const itemID = JSON.parse(productAsJson).id;
+            if (itemID === productID) {
+                localStorage.removeItem(itemKey);
+                return;
+            }
+        }
+    }
+
+    function addCallbacksToRemoveButtons() {
+        const removeButtons = document.getElementsByClassName("removeItemBtn");
+        for (let button of removeButtons) {
+            button.addEventListener("click", function () {
+                deleteItem(parseInt(button.id));
+                showAllItemsInBasket();
+            });
+        }
+    }
+
     function showInBasket(jsonArray) {
         const basketContainer = document.getElementById("basket-container");
-        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th></tr>`;
+        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th><th></th></tr>`;
         for (let i = 0; i < jsonArray.length; i++) {
             const itemAsObject = JSON.parse(jsonArray[i]);
             content += `<tr>
@@ -63,10 +80,24 @@ window.onload = function () {
                         <td>${itemAsObject.price}</td>
                         <td>${itemAsObject.colour}</td>
                         <td>${itemAsObject.quantity}</td>
-                        </tr>`
+                        <td><button class="removeItemBtn" id="${itemAsObject.id}">Usuń</button></td>
+                        </tr>`;
         }
-        content += `</table>`
+        content += `</table>`;
         basketContainer.innerHTML = content;
+        addCallbacksToRemoveButtons();
+    }
+
+    function showAllItemsInBasket() {
+        if (localStorage.length === 0)
+            return clearBasket();
+        let products = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const itemKey = localStorage.key(i);
+            const productAsJson = localStorage.getItem(itemKey);
+            products.push(productAsJson);
+        }
+        showInBasket(products);
     }
 
     function clearInputs() {
