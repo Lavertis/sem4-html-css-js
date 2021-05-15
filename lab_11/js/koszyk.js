@@ -13,26 +13,70 @@ window.onload = function () {
         product.colour = productColour;
         product.quantity = productQuantity
         localStorage.setItem(`Product ${localStorage.length + 1}`, JSON.stringify(product));
+        clearInputs();
     });
 
     document.getElementById("showBtn").addEventListener("click", function () {
-        const basketContainer = document.getElementById("basket-container");
-        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th></tr>`;
+        clearInputs();
+        clearBasket();
+        if (localStorage.length === 0)
+            return;
+        let products = [];
         for (let i = 0; i < localStorage.length; i++) {
             const itemName = localStorage.key(i);
-            const item = JSON.parse(localStorage.getItem(itemName));
-            content += `<tr>
-                        <td>${item.name}</td>
-                        <td>${item.price}</td>
-                        <td>${item.colour}</td>
-                        <td>${item.quantity}</td>
-                        </tr>`
+            const productAsJson = localStorage.getItem(itemName);
+            products.push(productAsJson);
         }
-        content += `</table>`
-        basketContainer.innerHTML = content;
+        showInBasket(products);
     });
 
     document.getElementById("clearBtn").addEventListener("click", function () {
         localStorage.clear();
+        clearBasket();
+        clearInputs();
     });
+
+    document.getElementById("searchBtn").addEventListener("click", function () {
+        clearBasket();
+        const searchedName = document.getElementById("product-name").value;
+        if (localStorage.length === 0 || searchedName === "")
+            return;
+        let products = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const itemName = localStorage.key(i);
+            const productAsJson = localStorage.getItem(itemName);
+            if (!JSON.parse(productAsJson).name.includes(searchedName))
+                continue;
+            products.push(productAsJson);
+        }
+        if (products.length !== 0)
+            showInBasket(products);
+    });
+
+    function showInBasket(jsonArray) {
+        const basketContainer = document.getElementById("basket-container");
+        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th></tr>`;
+        for (let i = 0; i < jsonArray.length; i++) {
+            const itemAsObject = JSON.parse(jsonArray[i]);
+            content += `<tr>
+                        <td>${itemAsObject.name}</td>
+                        <td>${itemAsObject.price}</td>
+                        <td>${itemAsObject.colour}</td>
+                        <td>${itemAsObject.quantity}</td>
+                        </tr>`
+        }
+        content += `</table>`
+        basketContainer.innerHTML = content;
+    }
+
+    function clearInputs() {
+        document.getElementById("product-name").value = "";
+        document.getElementById("product-price").value = "";
+        document.getElementById("product-colour").value = "";
+        document.getElementById("product-quantity").value = "";
+    }
+
+    function clearBasket() {
+        document.getElementById("basket-container").innerHTML = "";
+    }
 };
