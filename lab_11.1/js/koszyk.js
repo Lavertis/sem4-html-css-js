@@ -10,8 +10,10 @@ window.onload = function () {
         const productPrice = document.getElementById("product-price").value;
         const productColour = document.getElementById("product-colour").value;
         const productQuantity = document.getElementById("product-quantity").value;
-        if ([productName, productPrice, productColour, productQuantity].some(el => el === ""))
-            return;
+        if ([productName, productPrice, productColour, productQuantity].some(el => el === "")) {
+            document.getElementById("error").innerHTML = "Nie podano wystarczającej ilości danych";
+            return false;
+        }
         let product = {};
         product.name = productName;
         product.price = productPrice;
@@ -25,7 +27,6 @@ window.onload = function () {
 
     document.getElementById("showBtn").addEventListener("click", function () {
         document.getElementById("error").innerHTML = "";
-        clearInputs();
         showAllProductsInBasket();
     });
 
@@ -43,13 +44,8 @@ window.onload = function () {
 
     function searchProductByName() {
         clearBasket();
-        document.getElementById("error").innerHTML = "";
-        document.getElementById("product-price").value = "";
-        document.getElementById("product-colour").value = "";
-        document.getElementById("product-quantity").value = "";
-
         const productList = JSON.parse(localStorage.getItem("products"));
-        const searchedName = document.getElementById("product-name").value;
+        const searchedName = document.getElementById("product-search").value;
         if (localStorage.length === 0 || searchedName === "") {
             document.getElementById("error").innerHTML = "Brak produktu o podanej nazwie";
             return false;
@@ -116,6 +112,7 @@ window.onload = function () {
         for (let button of removeButtons) {
             button.addEventListener("click", function () {
                 deleteProductByID(parseInt(button.getAttribute("data-productID")));
+                showAllProductsInBasket();
             });
         }
     }
@@ -140,8 +137,10 @@ window.onload = function () {
 
     function showAllProductsInBasket() {
         const productList = JSON.parse(localStorage.getItem("products"));
-        if (productList.length === 0)
+        if (productList.length === 0) {
+            document.getElementById("error").innerHTML = "Brak produktów w koszyku";
             return clearBasket();
+        }
 
         let products = [];
         for (let i = 0; i < productList.length; i++) {
