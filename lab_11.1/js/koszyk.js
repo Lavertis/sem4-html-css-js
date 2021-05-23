@@ -1,7 +1,12 @@
 window.onload = function () {
+    let productsID = 0;
     if (localStorage.getItem("products") === null)
         localStorage.setItem("products", JSON.stringify([]));
-    let productsID = JSON.parse(localStorage.getItem("products")).length;
+    else {
+        const localStorageTableLength = JSON.parse(localStorage.getItem("products")).length
+        if (localStorageTableLength !== 0)
+            productsID = JSON.parse(localStorage.getItem("products"))[localStorageTableLength - 1].id + 1;
+    }
 
     document.getElementById("saveBtn").addEventListener("click", function () {
         document.getElementById("error").innerHTML = "";
@@ -27,6 +32,7 @@ window.onload = function () {
 
     document.getElementById("showBtn").addEventListener("click", function () {
         document.getElementById("error").innerHTML = "";
+        document.getElementById("product-search").value = "";
         showAllProductsInBasket();
     });
 
@@ -46,11 +52,6 @@ window.onload = function () {
         clearBasket();
         const productList = JSON.parse(localStorage.getItem("products"));
         const searchedName = document.getElementById("product-search").value;
-        if (localStorage.length === 0 || searchedName === "") {
-            document.getElementById("error").innerHTML = "Brak produktu o podanej nazwie";
-            return false;
-        }
-
         let products = [];
         for (let i = 0; i < productList.length; i++) {
             const productAsObj = productList[i];
@@ -58,8 +59,10 @@ window.onload = function () {
                 products.push(productAsObj);
         }
 
-        if (products.length !== 0)
-            showProductArrayInBasket(products);
+        if (products.length === 0 || searchedName === "") {
+            document.getElementById("error").innerHTML = "Brak produktów zawierających podany ciąg znaków";
+            return false;
+        } else showProductArrayInBasket(products);
     }
 
     document.getElementById("editBtn").addEventListener("click", function () {
@@ -78,7 +81,6 @@ window.onload = function () {
         if (newProductColour !== "") productList[productIndex].colour = newProductColour;
         if (newProductQuantity !== "") productList[productIndex].quantity = newProductQuantity;
         localStorage.setItem("products", JSON.stringify(productList));
-        showAllProductsInBasket();
     });
 
     function findProductListIndexByName(productName) {
@@ -112,7 +114,11 @@ window.onload = function () {
         for (let button of removeButtons) {
             button.addEventListener("click", function () {
                 deleteProductByID(parseInt(button.getAttribute("data-productID")));
-                showAllProductsInBasket();
+                const searchedName = document.getElementById("product-search").value;
+                if (searchedName !== "")
+                    searchProductByName();
+                else
+                    showAllProductsInBasket();
             });
         }
     }

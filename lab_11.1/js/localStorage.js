@@ -3,6 +3,8 @@ window.onload = function () {
     document.getElementById("saveBtn").addEventListener("click", function () {
         const colorCode = document.getElementById("color-code").value;
         const colorName = document.getElementById("color-name").value;
+        if (colorCode === "" || colorName === "")
+            return;
         localStorage.setItem(colorCode, colorName);
     });
 
