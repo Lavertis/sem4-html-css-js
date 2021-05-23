@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Web storage</title>
+    <script src="js/koszyk.js"></script>
+    <style>
+        .basket * {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>Koszyk na produkty</h2>
+    <table>
+        <tr>
+            <td><label for="product-name">Nazwa produktu:</label></td>
+            <td><input id="product-name" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="product-price">Cena:</label></td>
+            <td><input id="product-price" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="product-colour">Kolor:</label></td>
+            <td><input id="product-colour" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="product-quantity">Liczba sztuk:</label></td>
+            <td><input id="product-quantity" type="text"></td>
+        </tr>
+    </table>
+    <br>
+    <button id="saveBtn">Zapisz produkt do koszyka</button>
+    <br><br>
+    <button id="showBtn">Wyświetl koszyk</button>
+    <br><br>
+    <button id="clearBtn">Usuń wszystkie produkty</button>
+    <br><br>
+    <button id="editBtn">Edytuj po nazwie</button>
+    <br><br>
+    <label for="product-search"></label>
+    <input id="product-search" type="text">
+    <button id="searchBtn">Wyszukaj po nazwie</button>
+    <br><br>
+    <span id="error" style="color: red"></span>
+    <br><br>
+    <div class="basket" id="basket-container"></div>
+</div>
+</body>
+</html>
