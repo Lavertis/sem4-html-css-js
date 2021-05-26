@@ -2,9 +2,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     localStorage.clear();
     let user = new User();
+
     document.getElementById("form").innerHTML = user.getRegisterFormAsHtml();
-    console.log(user.toString());
-    document.getElementById("registerBtn").addEventListener("click", () => user.register());
+    document.getElementById("registerBtn").addEventListener("click", function () {
+        const login = document.getElementById("login").value;
+        const pass = document.getElementById("pass").value;
+        const email = document.getElementById("email").value;
+        if ([login, pass, email].some(value => value === "")) {
+            document.getElementById("info").innerHTML = "Wprowadź wszystkie dane";
+            return false;
+        }
+        if (localStorage.hasOwnProperty(login)) {
+            document.getElementById("info").innerHTML = "Istnieje już użytkownik o podanym loginie";
+            return false;
+        }
+        if (Object.values(localStorage).some(user => JSON.parse(user).email === email)) {
+            document.getElementById("info").innerHTML = "Istnieje już użytkownik o podanym adresie email";
+            return false;
+        }
+
+        user.login = login;
+        user.pass = pass;
+        user.email = email;
+        user.register();
+        document.getElementById("info").innerHTML = `Dodano użytkownika ${login}`;
+        console.log(user.toString());
+    });
 });
 
 // User class definition
@@ -16,25 +39,8 @@ class User {
     }
 
     register() {
-        this.login = document.getElementById("login").value;
-        this.pass = document.getElementById("pass").value;
-        this.email = document.getElementById("email").value;
-        if ([this.login, this.pass, this.email].some(value => value === "")) {
-            document.getElementById("info").innerHTML = "Wprowadź wszystkie dane";
-            return false;
-        }
-
-        if (localStorage.hasOwnProperty(this.login)) {
-            document.getElementById("info").innerHTML = "Istnieje już użytkownik o podanym loginie";
-            return false;
-        } else if (Object.values(localStorage).some(user => JSON.parse(user).email === this.email)) {
-            document.getElementById("info").innerHTML = "Istnieje już użytkownik o podanym adresie email";
-            return false;
-        } else {
-            localStorage.setItem(this.login, JSON.stringify(this));
-            document.getElementById("info").innerHTML = `Dodano użytkownika ${this.login}`;
-            return true;
-        }
+        localStorage.setItem(this.login, JSON.stringify(this));
+        return true;
     }
 
     getRegisterFormAsHtml() {
@@ -47,6 +53,6 @@ class User {
     }
 
     toString() {
-        return "Dane użytkownika:\nlogin: " + this.login + "\nhasło: " + this.pass + "\nemail: " + this.email;
+        return `Dane użytkownika:\nlogin: ${this.login}\nhasło: ${this.pass}\nemail: ${this.email}`;
     }
 }
