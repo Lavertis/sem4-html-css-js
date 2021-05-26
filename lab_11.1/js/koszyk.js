@@ -65,28 +65,30 @@ window.onload = function () {
         } else showProductArrayInBasket(products);
     }
 
-    document.getElementById("editBtn").addEventListener("click", function () {
+    document.getElementById("editByIdBtn").addEventListener("click", function () {
         document.getElementById("error").innerHTML = "";
-        const productName = document.getElementById("product-name").value;
-        const productIndex = findProductListIndexByName(productName);
+        const productID = document.getElementById("product-id").value;
+        const productIndex = findProductListIndexByID(productID);
         if (productIndex === -1) {
-            document.getElementById("error").innerHTML = "Brak produktu o podanej nazwie";
+            document.getElementById("error").innerHTML = "Brak produktu o podanym ID";
             return false;
         }
         let productList = JSON.parse(localStorage.getItem("products"));
+        const newProductName = document.getElementById("product-name").value;
         const newProductPrice = document.getElementById("product-price").value;
         const newProductColour = document.getElementById("product-colour").value;
         const newProductQuantity = document.getElementById("product-quantity").value;
+        if (newProductName !== "") productList[productIndex].name = newProductName;
         if (newProductPrice !== "") productList[productIndex].price = newProductPrice;
         if (newProductColour !== "") productList[productIndex].colour = newProductColour;
         if (newProductQuantity !== "") productList[productIndex].quantity = newProductQuantity;
         localStorage.setItem("products", JSON.stringify(productList));
     });
 
-    function findProductListIndexByName(productName) {
+    function findProductListIndexByID(productID) {
         const productList = JSON.parse(localStorage.getItem("products"));
         for (let i = 0; i < productList.length; i++) {
-            if (productList[i].name === productName)
+            if (parseInt(productList[i].id) === parseInt(productID))
                 return i
         }
         return -1;
@@ -125,7 +127,7 @@ window.onload = function () {
 
     function showProductArrayInBasket(productArray) {
         const basketContainer = document.getElementById("basket-container");
-        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th><th></th></tr>`;
+        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th><th>ID</th><th></th></tr>`;
         for (let i = 0; i < productArray.length; i++) {
             const productAsObj = productArray[i];
             content += `<tr>
@@ -133,6 +135,7 @@ window.onload = function () {
                         <td>${productAsObj.price}</td>
                         <td>${productAsObj.colour}</td>
                         <td>${productAsObj.quantity}</td>
+                        <td>${productAsObj.id}</td>
                         <td><button class="removeItemBtn" data-productID="${productAsObj.id}">Usuń</button></td>
                         </tr>`;
         }
