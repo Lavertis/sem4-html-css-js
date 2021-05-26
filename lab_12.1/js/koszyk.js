@@ -42,11 +42,12 @@ window.onload = function () {
         const newProductPrice = document.getElementById("product-price").value;
         const newProductColour = document.getElementById("product-colour").value;
         const newProductQuantity = document.getElementById("product-quantity").value;
-        if ([newProductPrice, newProductColour, newProductQuantity].every(el => el === "")) {
+        if ([productName, newProductPrice, newProductColour, newProductQuantity].every(el => el === "")) {
             document.getElementById("error").innerHTML = "Nie podano żadnych nowych danych";
             return;
         }
-        const product = new Product(productName, newProductPrice, newProductColour, newProductQuantity);
+        const productID = document.getElementById("product-id").value;
+        const product = new Product(productName, newProductPrice, newProductColour, newProductQuantity, productID);
         if (!basket.editProduct(product))
             document.getElementById("error").innerHTML = "Brak produktu o podanej nazwie";
     });
@@ -76,12 +77,12 @@ window.onload = function () {
 };
 
 class Product {
-    constructor(name, price, colour, quantity) {
+    constructor(name, price, colour, quantity, productID = null) {
         this.name = name;
         this.price = price;
         this.colour = colour;
         this.quantity = quantity;
-        this.id = null;
+        this.id = productID;
     }
 }
 
@@ -90,7 +91,7 @@ class Basket {
         this.productsID = 0;
         this.productList = [];
         this.#initializeProductsID();
-        this.updateCurrentProductList();
+        this.getProductListFromLocalStorage();
     }
 
     #initializeProductsID() {
@@ -103,8 +104,12 @@ class Basket {
         }
     }
 
-    updateCurrentProductList() {
+    getProductListFromLocalStorage() {
         this.productList = JSON.parse(localStorage.getItem("products"));
+    }
+
+    updateProductListInLocalStorage() {
+        localStorage.setItem("products", JSON.stringify(this.productList));
     }
 
     addProduct(product) {
@@ -112,18 +117,19 @@ class Basket {
             return false;
         product.id = this.productsID++;
         this.productList.push(product);
-        localStorage.setItem("products", JSON.stringify(this.productList));
+        this.updateProductListInLocalStorage();
         return true;
     }
 
     editProduct(product) {
-        const productIndex = this.findProductListIndexByName(product.name);
+        const productIndex = this.findProductListIndexByID(product.id);
         if (productIndex === -1)
             return false;
+        if (product.name !== "") this.productList[productIndex].name = product.name;
         if (product.price !== "") this.productList[productIndex].price = product.price;
         if (product.colour !== "") this.productList[productIndex].colour = product.colour;
         if (product.quantity !== "") this.productList[productIndex].quantity = product.quantity;
-        localStorage.setItem("products", JSON.stringify(this.productList));
+        this.updateProductListInLocalStorage();
         return true;
     }
 
@@ -143,9 +149,9 @@ class Basket {
     }
 
 
-    findProductListIndexByName(productName) {
+    findProductListIndexByID(productID) {
         for (let i = 0; i < this.productList.length; i++) {
-            if (this.productList[i].name === productName)
+            if (parseInt(this.productList[i].id) === parseInt(productID))
                 return i
         }
         return -1;
@@ -155,7 +161,7 @@ class Basket {
         for (let i = 0; i < this.productList.length; i++) {
             if (this.productList[i].id === productID) {
                 this.productList.splice(i, 1);
-                localStorage.setItem("products", JSON.stringify(this.productList));
+                this.updateProductListInLocalStorage();
                 if (document.getElementById("product-name").value !== "")
                     this.searchProductByName();
                 else
@@ -168,7 +174,7 @@ class Basket {
 
     showProductArrayInBasket(productArray) {
         const basketContainer = document.getElementById("basket-container");
-        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th><th></th></tr>`;
+        let content = `<table><tr><th>Nazwa</th><th>Cena</th><th>Kolor</th><th>Liczba sztuk</th><th>ID</th><th></th></tr>`;
         for (let i = 0; i < productArray.length; i++) {
             const productAsObj = productArray[i];
             content += `<tr>
@@ -176,6 +182,7 @@ class Basket {
                         <td>${productAsObj.price}</td>
                         <td>${productAsObj.colour}</td>
                         <td>${productAsObj.quantity}</td>
+                        <td>${productAsObj.id}</td>
                         <td><button class="removeItemBtn" data-productID="${productAsObj.id}">Usuń</button></td>
                         </tr>`;
         }
